@@ -1,5 +1,18 @@
 version: '3.3'
 services:
+services:
+  servicio1:
+    container_name: servicio1
+    image: servicio1
+    build: 
+      dockerfile: Dockerfile 
+      context: ./servicio1
+    environment: 
+      - HOST=mysql-bd      
+    ports:
+      - '3003:3003'
+    depends_on:
+      - mysql-bd
   mysql-bd:
     container_name: mysql-bd
     image: mysql-bd
