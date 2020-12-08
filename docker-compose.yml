@@ -1,0 +1,11 @@
+version: '3.3'
+services:
+  mysql-bd:
+    container_name: mysql-bd
+    image: mysql-bd
+    build: 
+      dockerfile: Dockerfile
+      context: ./mysql-bd
+    ports: 
+      - '33060:3306'
+
