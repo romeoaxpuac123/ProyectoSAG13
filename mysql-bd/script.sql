@@ -10,18 +10,20 @@ CREATE TABLE IF NOT EXISTS Proveedor
     password varchar(15),
     direccion varchar(155)
 );
+INSERT INTO Proveedor (empresa,email,password,direccion)VALUES ('DOCH','proveedor@doch.com','1234','Guatemala City');
 
 CREATE TABLE IF NOT EXISTS Cliente
 (
     id_cliente int auto_increment,
     Nombre varchar(150),
     Apellido varchar(155),
-    Password varchar(20),
+    password varchar(20),
     email varchar(150),
     celular varchar(15),
     fotografia varchar(155),
     primary key(id_cliente)
 );
+INSERT INTO Cliente (Nombre,Apellido,password,email,celular,fotografia)VALUES ('Romeo','Axpuac','1234','romeo@gmail.com','12345','Foto1');
 
 CREATE TABLE IF NOT EXISTS Tarjeta
 (
