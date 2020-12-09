@@ -1,13 +1,28 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<title>Tienda online</title>
-<h1>Login</h1>
-<body>
- </body>
-</html>
+<div class='container'>
+  <h1>Primer formulario</h1>
+  <form>
+    <div class="form-group">
+        <div class="input-group">
+          <input type='text' class='form-control' #usernameField [placeholder]='placeholders.username' name='Identificador'>
+        </div>
+        <div class="input-group">
+          <input type='password' class='form-control' #usernamePass [placeholder]='placeholders.userpass' name='Password'>
+        </div>
+        <div class="input-group">
+          <input type='button' (click)='recibirDatos(usernameField, usernamePass);' class='btn btn-primary' #sendButton value='Ingresar'>
+        </div>
+      </div>
+  </form>
+
+
+  <div class="row"><br></div>
+  <ng-container *ngIf="(nombreRecibido > '' && passRecibida > ''); else faltanDatos">
+    El nombre de usuario es: <strong>{{nombreRecibido}}</strong>
+    <br>
+    La clave es: <strong>{{passRecibida}}</strong>
+  </ng-container>
+  <ng-template #faltanDatos>
+    Falta el nombre de usuario, la clave o ambos.
+  </ng-template>
+</div>
+

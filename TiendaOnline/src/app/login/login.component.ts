@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  nombreRecibido = '';
+  passRecibida = '';
+
+  placeholders = {
+    'username': 'Nombre de usuario',
+    'userpass': 'Contraseña'
+  };
+
   constructor() { }
 
-  ngOnInit(): void {
+  recibirDatos(nombre:HTMLInputElement,pass:HTMLInputElement) {
+    this.nombreRecibido = nombre.value;
+    this.passRecibida = pass.value;
   }
 
+  ngOnInit() {
+  }
 }
+
+
