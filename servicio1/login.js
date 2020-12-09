@@ -5,7 +5,7 @@ var mysql = require('mysql');
 var path = require('path');
 //host : '172.18.0.2',
 var conexion= mysql.createConnection({
-    host : '34.70.31.49',
+    host : '172.18.0.2',
     database : 'ProyectoSA',
     user : 'root',
     password : 'grupo13',
