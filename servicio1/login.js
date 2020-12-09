@@ -90,6 +90,53 @@ app.post('/authCliente',(req,res)=>{
 	}
 });
 
+app.post('/regisProveedor',(req,res)=>{
+	const {empresa, email, password,direccion} = req.body;
+	if(empresa && email && password && direccion){
+		conexion.query('SELECT * FROM Proveedor WHERE email = ? ', [email], function(error, result, fields) {
+			if (result.length > 0) {
+				res.json({"msg":false,"tipo":"error","user":0,"name":"error"});				
+			} else {
+				console.log("msg////////////////////////////");
+				conexion.query('INSERT INTO Proveedor (empresa,email,password,direccion) VALUES (?,?,?,?)',[empresa,email,password, direccion]);
+				let elnuevouser = 0;
+				conexion.query('SELECT * FROM Proveedor WHERE email = ? ', [email], function(error, result, fields) {
+					const myString = JSON.stringify(result);
+					var resultados = myString.split(',');
+					elnuevouser =  parseInt(resultados[0].split(':')[1]);
+					res.json({"msg":true,"user":elnuevouser,"name":empresa});
+				});
+				
+			}			
+		});
+	}else{
+		res.json({"msg":false,"user":0,"name":"error"});
+	}
+});
+
+app.post('/regisCliente',(req,res)=>{
+	const {Nombre, Apellido, password,email,celular,fotografia} = req.body;
+	if(Nombre && Apellido && password && email && celular && fotografia){
+		conexion.query('SELECT * FROM Cliente WHERE email = ? ', [email], function(error, result, fields) {
+			if (result.length > 0) {
+				res.json({"msg":false,"tipo":"error","user":0,"name":"error"});				
+			} else {
+				console.log("msg////////////////////////////");
+				conexion.query('INSERT INTO Cliente (Nombre,Apellido,password,email,celular,fotografia)VALUES(?,?,?,?,?,?)',[Nombre, Apellido, password,email,celular,fotografia]);
+				let elnuevouser = 0;
+				conexion.query('SELECT * FROM Cliente WHERE email = ? ', [email], function(error, result, fields) {
+					const myString = JSON.stringify(result);
+					var resultados = myString.split(',');
+					elnuevouser =  parseInt(resultados[0].split(':')[1]);
+					res.json({"msg":true,"user":elnuevouser,"name":Nombre});
+				});
+				
+			}			
+		});
+	}else{
+		res.json({"msg":false,"user":0,"name":"error"});
+	}
+});
 
 app.listen(app.get('port'),()=>{
 	console.log('Server on port 3003');
