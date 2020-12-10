@@ -79,7 +79,7 @@ app.post('/authCliente',(req,res)=>{
 
 				res.json({"msg":true,"user":user1,"name":nombre});
 				
-				res.json({"msg":true});
+				//res.json({"msg":true});
 			} else {
 				res.json({"msg":false,"user":0,"name":"error"});
 				//res.json({"msg":false});
