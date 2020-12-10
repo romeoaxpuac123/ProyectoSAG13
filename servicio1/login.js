@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var mysql = require('mysql');
-//const cors = require('cors');
+const cors = require('cors');
 var path = require('path');
 //host : '172.18.0.2',
 var conexion= mysql.createConnection({
@@ -25,7 +25,7 @@ app.set('port',3003);
 app.set('json spaces',2);
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-//app.use(cors());
+app.use(cors());
 
 app.get('/auth',(req,res)=>{
 	let Respuesta = {
