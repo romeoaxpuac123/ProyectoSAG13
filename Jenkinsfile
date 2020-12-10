@@ -12,7 +12,7 @@ pipeline {
         }		
 		stage('construyendo contenedores') {
             steps {
-                sh 'sudo docker-compose up --build -d'
+                sh 'docker-compose up --build -d'
             }
         }
     }
