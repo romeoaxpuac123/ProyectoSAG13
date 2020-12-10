@@ -1,0 +1,46 @@
+<div class="sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a id='linkWelcome' class="navbar-brand" [routerLink]="['/']">SM</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a id="linkRegister" class="nav-link" >Registrarse</a>
+                </li>
+                
+            </ul>
+
+        </div>
+    </nav>
+</div>    
+ 
+ <div class="jumbotron" align="center" style="background-color: gold; ">
+            <div class="container">
+                <h1 class="display-3"><strong>Super Market</strong></h1>
+                <p>
+                    ¡Bienvenido!
+                </p>
+            </div>
+        </div>
+    
+    <div class="panel panel-default" align="center">
+
+        <div class="col-md-4">
+            <div class="card bg-light">
+                <button type="button" class="btn btn-success">Soy un cliente</button>
+            </div>
+        </div>
+        <br>
+        <div class="col-md-4">
+            <div class="card bg-light">
+                <button type="button" class="btn btn-danger" (click)='gotologinproviders();'>Soy un proveedor</button>
+            </div>
+        </div>
+        <br>
+    </div>
+
+<app-pie-pagina></app-pie-pagina>

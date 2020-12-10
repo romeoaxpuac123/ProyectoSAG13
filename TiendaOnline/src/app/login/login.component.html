@@ -1,28 +1,52 @@
+<div class="sticky-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a id='linkWelcome' class="navbar-brand" [routerLink]="['/']">SM</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                  <a id="linkRegister" class="nav-link" >Registrarse</a>
+              </li>
+              
+          </ul>
+
+      </div>
+  </nav>
+</div>    
+
+<div class="jumbotron" align="center" style="background-color: gold; ">
+          <div class="container">
+              <h1 class="display-3"><strong>Super Market</strong></h1>
+              <p>
+                  Ingresa tus credenciales de proveedor. ¿No tienes una cuenta?
+                </p>
+                <div>
+                  <button type="button" class="btn btn-success">Registrarse</button>
+                </div>
+          </div>
+      </div>
+
 <div class='container'>
-  <h1>Primer formulario</h1>
   <form>
-    <div class="form-group">
-        <div class="input-group">
-          <input type='text' class='form-control' #usernameField [placeholder]='placeholders.username' name='Identificador'>
+    
+    <div class="form-group" style="padding:20px; " >
+        <div class="form-group">
+          <input type='text' class='form-control' [placeholder]='placeholders.username' name='Identificador' [(ngModel)]="user">
         </div>
-        <div class="input-group">
-          <input type='password' class='form-control' #usernamePass [placeholder]='placeholders.userpass' name='Password'>
+        <div class="form-group">
+          <input type='password' class='form-control' [placeholder]='placeholders.userpass' name='Password' [(ngModel)]="pass">
         </div>
-        <div class="input-group">
-          <input type='button' (click)='recibirDatos(usernameField, usernamePass);' class='btn btn-primary' #sendButton value='Ingresar'>
+        <div class="form-group">
+          <input type='button' (click)='recibirDatos();' class='btn btn-primary' #sendButton value='Ingresar'>
         </div>
       </div>
   </form>
 
 
-  <div class="row"><br></div>
-  <ng-container *ngIf="(nombreRecibido > '' && passRecibida > ''); else faltanDatos">
-    El nombre de usuario es: <strong>{{nombreRecibido}}</strong>
-    <br>
-    La clave es: <strong>{{passRecibida}}</strong>
-  </ng-container>
-  <ng-template #faltanDatos>
-    Falta el nombre de usuario, la clave o ambos.
-  </ng-template>
 </div>
 
+<app-pie-pagina></app-pie-pagina>
