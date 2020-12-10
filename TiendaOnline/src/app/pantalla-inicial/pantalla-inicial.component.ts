@@ -17,5 +17,9 @@ export class PantallaInicialComponent implements OnInit {
 
   }
 
+  gotologinclients(){
+    this.router.navigate(['/loginclient']);
+
+  }
 
 }

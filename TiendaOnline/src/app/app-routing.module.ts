@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { LoginClienteComponent } from './login-cliente/login-cliente.component';
 import { LoginComponent } from './login/login.component';
 import { PantallaInicialComponent } from './pantalla-inicial/pantalla-inicial.component';
 
 const routes: Routes = [ 
   {path:'',redirectTo:'/welcome',pathMatch:'full'},
   { path: 'welcome', component: PantallaInicialComponent },
-  { path: 'login', component: LoginComponent }];
+  { path: 'login', component: LoginComponent },
+  { path: 'loginclient', component: LoginClienteComponent }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
