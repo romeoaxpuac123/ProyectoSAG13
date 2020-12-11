@@ -47,6 +47,8 @@ CREATE TABLE IF NOT EXISTS Producto
 
 );
 
+INSERT INTO Producto (Nombre,Precio_Venta,stock,categoria,imagen,precio_final,id_provedor)VALUES ('Vaso Vengadores',8.00,100,'Cocina','https://http2.mlstatic.com/D_NQ_NP_772229-MLA41917959738_052020-W.jpg',8.80,1);
+
 CREATE TABLE IF NOT EXISTS Carrito
 (
     id_carrito int primary key auto_increment,
