@@ -5,7 +5,7 @@ const cors = require('cors');
 var path = require('path');
 //host : '172.18.0.2',
 var conexion= mysql.createConnection({
-    host : '172.22.0.2',
+    host : '172.18.0.2',
     database : 'ProyectoSA',
     user : 'root',
     password : 'grupo13',
