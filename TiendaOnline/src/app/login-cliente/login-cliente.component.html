@@ -9,7 +9,7 @@
 
           <ul class="navbar-nav mr-auto">
               <li class="nav-item">
-                  <a id="linkRegister" class="nav-link" >Registrarse</a>
+                  <a id="linkRegister" class="nav-link" [routerLink]="['/']">Volver</a>
               </li> 
           </ul>
       </div>
@@ -18,12 +18,12 @@
 
 <div class="jumbotron" align="center" style="background-color: gold; ">
           <div class="container">
-              <h1 class="display-3"><strong>Super Market</strong></h1>
+              <h1 class="display-3"><strong>Hola Cliente Super Market</strong></h1>
               <p>
                   Ingresa tus credenciales de cliente. ¿No tienes una cuenta?
                 </p>
                 <div>
-                  <button type="button" class="btn btn-success">Registrarse</button>
+                  <button type="button" class="btn btn-success" [routerLink]="['/registercli']">Registrarse</button>
                 </div>
           </div>
       </div>

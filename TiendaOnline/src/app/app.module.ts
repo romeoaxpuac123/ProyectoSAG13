@@ -11,6 +11,9 @@ import { PiePaginaComponent } from './pie-pagina/pie-pagina.component';
 import { LoginClienteComponent } from './login-cliente/login-cliente.component';
 import { RegistroProveedorComponent } from './registro-proveedor/registro-proveedor.component';
 import { RegistroClienteComponent } from './registro-cliente/registro-cliente.component';
+import { PantallaClienteComponent } from './pantalla-cliente/pantalla-cliente.component';
+import { NavBarClienteComponent } from './nav-bar-cliente/nav-bar-cliente.component';
+import { PerfilClienteComponent } from './perfil-cliente/perfil-cliente.component';
 
 
 
@@ -22,7 +25,10 @@ import { RegistroClienteComponent } from './registro-cliente/registro-cliente.co
     PiePaginaComponent,
     LoginClienteComponent,
     RegistroProveedorComponent,
-    RegistroClienteComponent
+    RegistroClienteComponent,
+    PantallaClienteComponent,
+    NavBarClienteComponent,
+    PerfilClienteComponent
   ],
   imports: [
     BrowserModule,

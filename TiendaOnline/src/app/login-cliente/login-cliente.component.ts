@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginClienteService} from "../servicios/login-cliente.service";
 import { SesionesService } from '../servicios/sesiones.service';
+import { CanActivate, Router } from '@angular/router';
 @Component({
   selector: 'app-login-cliente',
   templateUrl: './login-cliente.component.html',
@@ -19,13 +20,13 @@ export class LoginClienteComponent implements OnInit {
     'username': 'Nombre de usuario',
     'userpass': 'Contraseña'
   };
-  constructor(private servlogin:LoginClienteService, private sesiones:SesionesService) { }
+  constructor(private router: Router,private servlogin:LoginClienteService, private sesiones:SesionesService) { }
 
   ngOnInit(): void {
   }
 
   hacerPostLoginCliente() {
-   this.sesiones.guardar_sesion("prueba","sesion","login");
+   //this.sesiones.guardar_sesion("prueba","sesion","login");
     this.nombreRecibido = this.user;
     this.passRecibida = this.pass;
     this.servlogin.EnviarCredenciales(this.user,this.pass).subscribe(
@@ -34,7 +35,7 @@ export class LoginClienteComponent implements OnInit {
                console.log(this.listainfo.msg);
                if(this.listainfo.msg==true){
                   alert("usuario valido");
-
+                  this.router.navigate(['/cliente']);
                }else{
                 alert("usuario no valido");
 
