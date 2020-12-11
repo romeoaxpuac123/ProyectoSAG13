@@ -1,28 +1,16 @@
 {
-    "name": "servicio2",
-    "version": "1.0.1",
-    "description": "servicio2",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"ERROR EN LA COMUNICACION \" && exit 1 ",
-        "start": "nodemon index.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": ""
-    },
-    "author": "JONNATHAN CASTILLO",
-    "dependencies": {
-        "chai": "^4.2.0",
-        "cors": "^2.8.5",
-        "dotenv": "^8.2.0",
-        "express": "^4.17.1",
-        "fs": "0.0.1-security",
-        "mocha": "^8.2.0",
-        "mongoose": "^5.10.2",
-        "morgan": "^1.10.0",
-        "mysql": "^2.18.1",
-        "nodemon": "^2.0.4",
-        "path": "^0.12.7"
-    }
+  "name": "servicio1",
+  "version": "1.0.0",
+  "description": "sa",
+  "main": "login.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {}
 }

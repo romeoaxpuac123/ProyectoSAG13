@@ -8,10 +8,6 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 4000
+EXPOSE 4003
 
-CMD ["node", "index.js"]
-
-
-
-
+CMD ["node","servicio2.js"]

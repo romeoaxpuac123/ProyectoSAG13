@@ -13,6 +13,18 @@ services:
       - '3003:3003'
     depends_on:
       - mysql-bd
+  servicio2:
+    container_name: servicio2
+    image: servicio2
+    build: 
+      dockerfile: Dockerfile 
+      context: ./servicio2
+    environment: 
+      - HOST=mysql-bd      
+    ports:
+      - '4003:4003'
+    depends_on:
+      - mysql-bd
   mysql-bd:
     container_name: mysql-bd
     image: mysql-bd
@@ -21,4 +33,5 @@ services:
       context: ./mysql-bd
     ports: 
       - '33060:3306'
+
 
