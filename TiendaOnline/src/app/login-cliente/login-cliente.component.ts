@@ -26,7 +26,6 @@ export class LoginClienteComponent implements OnInit {
   }
 
   hacerPostLoginCliente() {
-   //this.sesiones.guardar_sesion("prueba","sesion","login");
     this.nombreRecibido = this.user;
     this.passRecibida = this.pass;
     this.servlogin.EnviarCredenciales(this.user,this.pass).subscribe(

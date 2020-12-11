@@ -8,8 +8,8 @@ import { CanActivate, Router } from '@angular/router';
 export class PerfilClienteComponent implements OnInit {
   listainfo:any=[];
   
-  name:string="holaa";
-  apellido:string="mundo";
+  name:string="";
+  apellido:string="";
   email:string="";
   celular:string="";
   

@@ -14,6 +14,9 @@ import { RegistroClienteComponent } from './registro-cliente/registro-cliente.co
 import { PantallaClienteComponent } from './pantalla-cliente/pantalla-cliente.component';
 import { NavBarClienteComponent } from './nav-bar-cliente/nav-bar-cliente.component';
 import { PerfilClienteComponent } from './perfil-cliente/perfil-cliente.component';
+import { PantallaProveedorComponent } from './pantalla-proveedor/pantalla-proveedor.component';
+import { NavBarProveedorComponent } from './nav-bar-proveedor/nav-bar-proveedor.component';
+import { PerfilProveedorComponent } from './perfil-proveedor/perfil-proveedor.component';
 
 
 
@@ -28,7 +31,10 @@ import { PerfilClienteComponent } from './perfil-cliente/perfil-cliente.componen
     RegistroClienteComponent,
     PantallaClienteComponent,
     NavBarClienteComponent,
-    PerfilClienteComponent
+    PerfilClienteComponent,
+    PantallaProveedorComponent,
+    NavBarProveedorComponent,
+    PerfilProveedorComponent
   ],
   imports: [
     BrowserModule,

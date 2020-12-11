@@ -7,6 +7,8 @@ import { RegistroProveedorComponent } from './registro-proveedor/registro-provee
 import { RegistroClienteComponent } from './registro-cliente/registro-cliente.component';
 import { PantallaClienteComponent } from './pantalla-cliente/pantalla-cliente.component';
 import { PerfilClienteComponent } from './perfil-cliente/perfil-cliente.component';
+import { PantallaProveedorComponent } from './pantalla-proveedor/pantalla-proveedor.component';
+import { PerfilProveedorComponent } from './perfil-proveedor/perfil-proveedor.component';
 const routes: Routes = [ 
   {path:'',redirectTo:'/welcome',pathMatch:'full'},
   { path: 'welcome', component: PantallaInicialComponent },
@@ -16,6 +18,8 @@ const routes: Routes = [
   { path: 'registercli', component: RegistroClienteComponent },
   { path: 'cliente', component: PantallaClienteComponent },
   { path: 'perfil-cliente', component: PerfilClienteComponent },
+  { path: 'proveedor', component: PantallaProveedorComponent },
+  { path: 'perfil-proveedor', component: PerfilProveedorComponent},
   
 ];
 
