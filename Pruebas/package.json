@@ -1,0 +1,21 @@
+{
+    "name": "Pruebas",
+    "version": "1.0.0",
+    "description": "Test Servicio 2",
+    "main": "servicio2.js",
+    "scripts": {
+      "test": " mocha lib/*.js --timeout 15000"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "chai": "^4.2.0",
+      "chai-as-promised": "^7.1.1",
+      "chai-http": "^4.3.0",
+      "chromedriver": "^85.0.1",
+      "faker": "^5.1.0",
+      "mocha": "^8.1.3",
+      "mochawesome": "^6.1.1"
+    }
+  }
+  
