@@ -9,6 +9,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { PantallaInicialComponent } from './pantalla-inicial/pantalla-inicial.component';
 import { PiePaginaComponent } from './pie-pagina/pie-pagina.component';
 import { LoginClienteComponent } from './login-cliente/login-cliente.component';
+import { RegistroProveedorComponent } from './registro-proveedor/registro-proveedor.component';
+import { RegistroClienteComponent } from './registro-cliente/registro-cliente.component';
 
 
 
@@ -18,7 +20,9 @@ import { LoginClienteComponent } from './login-cliente/login-cliente.component';
     LoginComponent,
     PantallaInicialComponent,
     PiePaginaComponent,
-    LoginClienteComponent
+    LoginClienteComponent,
+    RegistroProveedorComponent,
+    RegistroClienteComponent
   ],
   imports: [
     BrowserModule,

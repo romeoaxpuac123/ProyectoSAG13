@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService} from "../servicios/login.service";
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
   }
 
   recibirDatos() {
+    
     this.nombreRecibido = this.user;
     this.passRecibida = this.pass;
     this.servlogin.GuardarUsuario(this.user,this.pass).subscribe(
