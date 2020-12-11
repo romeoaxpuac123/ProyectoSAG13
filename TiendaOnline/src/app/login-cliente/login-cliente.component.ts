@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginClienteService} from "../servicios/login-cliente.service";
-import { SesionesService } from '../servicios/sesiones.service';
 import { CanActivate, Router } from '@angular/router';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 @Component({
   selector: 'app-login-cliente',
   templateUrl: './login-cliente.component.html',
@@ -20,7 +20,7 @@ export class LoginClienteComponent implements OnInit {
     'username': 'Nombre de usuario',
     'userpass': 'Contraseña'
   };
-  constructor(private router: Router,private servlogin:LoginClienteService, private sesiones:SesionesService) { }
+  constructor(private router: Router,private servlogin:LoginClienteService) { }
 
   ngOnInit(): void {
   }
@@ -34,8 +34,8 @@ export class LoginClienteComponent implements OnInit {
                this.listainfo=result;
                console.log(this.listainfo.msg);
                if(this.listainfo.msg==true){
-                  alert("usuario valido");
-                  this.router.navigate(['/cliente']);
+                localStorage.setItem("credenciales",JSON.stringify(result));
+                this.router.navigate(['/cliente']);
                }else{
                 alert("usuario no valido");
 
