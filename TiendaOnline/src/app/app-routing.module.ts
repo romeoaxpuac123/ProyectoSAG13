@@ -9,6 +9,9 @@ import { PantallaClienteComponent } from './pantalla-cliente/pantalla-cliente.co
 import { PerfilClienteComponent } from './perfil-cliente/perfil-cliente.component';
 import { PantallaProveedorComponent } from './pantalla-proveedor/pantalla-proveedor.component';
 import { PerfilProveedorComponent } from './perfil-proveedor/perfil-proveedor.component';
+import { AgregarProductoComponent } from './agregar-producto/agregar-producto.component';
+import { ActualizarProductoComponent } from './actualizar-producto/actualizar-producto.component';
+import { EliminarProductoComponent } from './eliminar-producto/eliminar-producto.component';
 const routes: Routes = [ 
   {path:'',redirectTo:'/welcome',pathMatch:'full'},
   { path: 'welcome', component: PantallaInicialComponent },
@@ -20,7 +23,9 @@ const routes: Routes = [
   { path: 'perfil-cliente', component: PerfilClienteComponent },
   { path: 'proveedor', component: PantallaProveedorComponent },
   { path: 'perfil-proveedor', component: PerfilProveedorComponent},
-  
+  { path: 'agregar-producto', component: AgregarProductoComponent},
+  { path: 'actualizar-producto', component: ActualizarProductoComponent},
+  { path: 'eliminar-producto', component: EliminarProductoComponent},
 ];
 
 @NgModule({

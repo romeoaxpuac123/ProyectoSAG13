@@ -13,7 +13,17 @@
   
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a id="linkRegister" class="nav-link" [routerLink]="['/']">Productos</a>
+                    <div class="dropdown">
+                        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Productos
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background-color: rgb(102, 107, 129);">
+                          <a class="dropdown-item" [routerLink]="['/agregar-producto']">Agregar producto</a>
+                          <a class="dropdown-item" [routerLink]="['/actualizar-producto']">Editar producto</a>
+                          <a class="dropdown-item" [routerLink]="['/eliminar-producto']">Eliminar producto</a>
+                        </div>
+                      </div>
+                
                 </li>
                 
             </ul>
