@@ -20,6 +20,7 @@ import { PerfilProveedorComponent } from './perfil-proveedor/perfil-proveedor.co
 import { AgregarProductoComponent } from './agregar-producto/agregar-producto.component';
 import { ActualizarProductoComponent } from './actualizar-producto/actualizar-producto.component';
 import { EliminarProductoComponent } from './eliminar-producto/eliminar-producto.component';
+import { ProductosProveedorComponent } from './productos-proveedor/productos-proveedor.component';
 
 
 
@@ -40,7 +41,8 @@ import { EliminarProductoComponent } from './eliminar-producto/eliminar-producto
     PerfilProveedorComponent,
     AgregarProductoComponent,
     ActualizarProductoComponent,
-    EliminarProductoComponent
+    EliminarProductoComponent,
+    ProductosProveedorComponent
   ],
   imports: [
     BrowserModule,

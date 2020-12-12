@@ -12,6 +12,7 @@ import { PerfilProveedorComponent } from './perfil-proveedor/perfil-proveedor.co
 import { AgregarProductoComponent } from './agregar-producto/agregar-producto.component';
 import { ActualizarProductoComponent } from './actualizar-producto/actualizar-producto.component';
 import { EliminarProductoComponent } from './eliminar-producto/eliminar-producto.component';
+import { ProductosProveedorComponent } from './productos-proveedor/productos-proveedor.component';
 const routes: Routes = [ 
   {path:'',redirectTo:'/welcome',pathMatch:'full'},
   { path: 'welcome', component: PantallaInicialComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'agregar-producto', component: AgregarProductoComponent},
   { path: 'actualizar-producto', component: ActualizarProductoComponent},
   { path: 'eliminar-producto', component: EliminarProductoComponent},
+  { path: 'productos-proveedor', component: ProductosProveedorComponent},
 ];
 
 @NgModule({

@@ -37,8 +37,8 @@ export class RegistroClienteComponent implements OnInit {
                this.listainfo=result;
                console.log(this.listainfo.msg);
                if(this.listainfo.msg==true){
-                  alert("usuario valido");
-
+                  alert("Registro exitoso!");
+                  window.location.reload();
                }else{
                 alert("usuario no valido");
 
