@@ -47,18 +47,20 @@ app.post('/authProveedor',(req,res)=>{
 				const myString = JSON.stringify(result);
 				var resultados = myString.split(',');
 				var user1 =  parseInt(resultados[0].split(':')[1]);
-				var nombre = resultados[1].split(':')[1].replace('\"','').replace('\"','');
-				//console.log("RRR*****->" + resultados);
+				var nombrex = resultados[1].split(':')[1].replace('\"','').replace('\"','');
+				var emailx = resultados[2].split(':')[1].replace('\"','').replace('\"','');
+				var direccionx = resultados[4].split(':')[1].replace('\"','').replace('\"','').replace('}]','');
+				console.log("RRR*****->" + resultados);
 
-				res.json({"msg":true,"user":user1,"name":nombre});
+				res.json({"msg":true,"user":user1,"name":nombrex,"email":emailx,"direccion":direccionx});
 				
 			} else {
-				res.json({"msg":false,"user":0,"name":"error"});
+				res.json({"msg":false,"user":0,"name":"error","email":"error","direccion":"error"});
 				//res.json({"msg":false});
 			}			
 		});
 	}else{
-		res.json({"msg":false,"tipo":"error","user":0,"name":"error"});
+		res.json({"msg":false,"user":0,"name":"error","email":"error","direccion":"error"});
 	}
 });
 
@@ -74,19 +76,22 @@ app.post('/authCliente',(req,res)=>{
 				const myString = JSON.stringify(result);
 				var resultados = myString.split(',');
 				var user1 =  parseInt(resultados[0].split(':')[1]);
-				var nombre = resultados[1].split(':')[1].replace('\"','').replace('\"','');
-				//console.log("RRR*****->" + resultados);
+				var nombrex = resultados[1].split(':')[1].replace('\"','').replace('\"','');
+				var apellidox = resultados[2].split(':')[1].replace('\"','').replace('\"','');
+				var passx = resultados[3].split(':')[1].replace('\"','').replace('\"','');
+				var emailx = resultados[4].split(':')[1].replace('\"','').replace('\"','');
+				var celularx = resultados[5].split(':')[1].replace('\"','').replace('\"','');
+				var fotox = resultados[6].split(':')[1].replace('\"','').replace('\"','').replace('}]','');;
+				console.log("RRR*****->" + resultados);
 
-				res.json({"msg":true,"user":user1,"name":nombre});
-				
-				//res.json({"msg":true});
+				res.json({"msg":true,"user":user1,"name":nombrex,"apellido":apellidox,"pass":passx,"email":emailx,"celular":celularx,"fotografia":fotox});
 			} else {
-				res.json({"msg":false,"user":0,"name":"error"});
+				res.json({"msg":false,"user":"error","name":"error","apellido":"error","pass":"error","email":"error","celular":"error","fotografia":"error"});
 				//res.json({"msg":false});
 			}			
 		});
 	}else{
-		res.json({"msg":false,"tipo":"error","user":0,"name":"error"});
+		res.json({"msg":false,"user":"error","name":"error","apellido":"error","pass":"error","email":"error","celular":"error","fotografia":"error"});
 	}
 });
 
@@ -95,7 +100,8 @@ app.post('/regisProveedor',(req,res)=>{
 	if(empresa && email && password && direccion){
 		conexion.query('SELECT * FROM Proveedor WHERE email = ? ', [email], function(error, result, fields) {
 			if (result.length > 0) {
-				res.json({"msg":false,"tipo":"error","user":0,"name":"error"});				
+				res.json({"msg":false,"user":0,"name":"error","email":"error","tel":"error","direccion":"error"});
+								
 			} else {
 				console.log("msg////////////////////////////");
 				conexion.query('INSERT INTO Proveedor (empresa,email,password,direccion) VALUES (?,?,?,?)',[empresa,email,password, direccion]);
@@ -104,13 +110,22 @@ app.post('/regisProveedor',(req,res)=>{
 					const myString = JSON.stringify(result);
 					var resultados = myString.split(',');
 					elnuevouser =  parseInt(resultados[0].split(':')[1]);
-					res.json({"msg":true,"user":elnuevouser,"name":empresa});
+					var nombrex = resultados[1].split(':')[1].replace('\"','').replace('\"','');
+					var emailx = resultados[2].split(':')[1].replace('\"','').replace('\"','');
+					var telx = resultados[3].split(':')[1].replace('\"','').replace('\"','');
+					var direccionx = resultados[4].split(':')[1].replace('\"','').replace('\"','').replace('}]','');
+					console.log("RRR*****->" + resultados);
+
+					res.json({"msg":true,"user":elnuevouser,"name":nombrex,"email":emailx,"tel":telx,"direccion":direccionx});
+				
+					//res.json({"msg":true,"user":elnuevouser,"name":empresa});
 				});
 				
 			}			
 		});
 	}else{
-		res.json({"msg":false,"user":0,"name":"error"});
+		res.json({"msg":false,"user":0,"name":"error","email":"error","tel":"error","direccion":"error"});
+				
 	}
 });
 
@@ -119,7 +134,7 @@ app.post('/regisCliente',(req,res)=>{
 	if(Nombre && Apellido && password && email && celular && fotografia){
 		conexion.query('SELECT * FROM Cliente WHERE email = ? ', [email], function(error, result, fields) {
 			if (result.length > 0) {
-				res.json({"msg":false,"tipo":"error","user":0,"name":"error"});				
+				res.json({"msg":false,"user":"error","name":"error","apellido":"error","pass":"error","email":"error","celular":"error","fotografia":"error"});				
 			} else {
 				console.log("msg////////////////////////////");
 				conexion.query('INSERT INTO Cliente (Nombre,Apellido,password,email,celular,fotografia)VALUES(?,?,?,?,?,?)',[Nombre, Apellido, password,email,celular,fotografia]);
@@ -128,13 +143,22 @@ app.post('/regisCliente',(req,res)=>{
 					const myString = JSON.stringify(result);
 					var resultados = myString.split(',');
 					elnuevouser =  parseInt(resultados[0].split(':')[1]);
-					res.json({"msg":true,"user":elnuevouser,"name":Nombre});
+					var nombrex = resultados[1].split(':')[1].replace('\"','').replace('\"','');
+				var apellidox = resultados[2].split(':')[1].replace('\"','').replace('\"','');
+				var passx = resultados[3].split(':')[1].replace('\"','').replace('\"','');
+				var emailx = resultados[4].split(':')[1].replace('\"','').replace('\"','');
+				var celularx = resultados[5].split(':')[1].replace('\"','').replace('\"','');
+				var fotox = resultados[6].split(':')[1].replace('\"','').replace('\"','').replace('}]','');;
+				console.log("RRR*****->" + resultados);
+
+				res.json({"msg":true,"user":elnuevouser,"name":nombrex,"apellido":apellidox,"pass":passx,"email":emailx,"celular":celularx,"fotografia":fotox});
+					
 				});
 				
 			}			
 		});
 	}else{
-		res.json({"msg":false,"user":0,"name":"error"});
+		res.json({"msg":false,"user":"error","name":"error","apellido":"error","pass":"error","email":"error","celular":"error","fotografia":"error"});
 	}
 });
 

@@ -1,0 +1,11 @@
+.encabezado{
+background-color: gold; 
+position: relative;
+left: 0;
+bottom: 0;
+width: 100%;
+height: 100%;
+text-align: center;
+padding-bottom: 10mm;
+padding-top: 10mm;
+}
