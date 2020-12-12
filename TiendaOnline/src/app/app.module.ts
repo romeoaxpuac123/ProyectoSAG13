@@ -21,6 +21,7 @@ import { AgregarProductoComponent } from './agregar-producto/agregar-producto.co
 import { ActualizarProductoComponent } from './actualizar-producto/actualizar-producto.component';
 import { EliminarProductoComponent } from './eliminar-producto/eliminar-producto.component';
 import { ProductosProveedorComponent } from './productos-proveedor/productos-proveedor.component';
+import { ProductosClienteComponent } from './productos-cliente/productos-cliente.component';
 
 
 
@@ -42,7 +43,8 @@ import { ProductosProveedorComponent } from './productos-proveedor/productos-pro
     AgregarProductoComponent,
     ActualizarProductoComponent,
     EliminarProductoComponent,
-    ProductosProveedorComponent
+    ProductosProveedorComponent,
+    ProductosClienteComponent
   ],
   imports: [
     BrowserModule,
