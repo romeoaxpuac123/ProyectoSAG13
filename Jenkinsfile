@@ -20,6 +20,11 @@ pipeline {
                 sh 'cd Pruebas; npm install; npm test'
             }
         }
+		stage('Realizando Pruebas funcionales') {
+            steps {
+                sh 'cd Pruebas_Funcionales; npm install; npm test'
+            }
+        }
 		
     }
 }
