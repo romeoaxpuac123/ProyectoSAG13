@@ -13,6 +13,7 @@ import { AgregarProductoComponent } from './agregar-producto/agregar-producto.co
 import { ActualizarProductoComponent } from './actualizar-producto/actualizar-producto.component';
 import { EliminarProductoComponent } from './eliminar-producto/eliminar-producto.component';
 import { ProductosProveedorComponent } from './productos-proveedor/productos-proveedor.component';
+import { ProductosClienteComponent } from './productos-cliente/productos-cliente.component';
 const routes: Routes = [ 
   {path:'',redirectTo:'/welcome',pathMatch:'full'},
   { path: 'welcome', component: PantallaInicialComponent },
@@ -28,6 +29,8 @@ const routes: Routes = [
   { path: 'actualizar-producto', component: ActualizarProductoComponent},
   { path: 'eliminar-producto', component: EliminarProductoComponent},
   { path: 'productos-proveedor', component: ProductosProveedorComponent},
+  { path: 'productos-cliente', component: ProductosClienteComponent},
+  
 ];
 
 @NgModule({
