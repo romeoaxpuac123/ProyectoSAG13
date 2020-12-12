@@ -1,0 +1,35 @@
+<div class="encabezado" align="center">
+    <div class="container">
+        <h1 class="display-3"><strong>Super Market</strong></h1>
+    </div>
+</div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark"  style=" padding-top: 0mm;">
+        <a id='linkWelcome' class="navbar-brand" [routerLink]="['/perfil-proveedor']">Perfil</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Productos
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background-color: rgb(102, 107, 129);">
+                          <a class="dropdown-item" [routerLink]="['/productos-proveedor']">Mis productos</a>
+                          <a class="dropdown-item" [routerLink]="['/agregar-producto']">Agregar producto</a>
+                          <a class="dropdown-item" [routerLink]="['/actualizar-producto']">Editar producto</a>
+                          <a class="dropdown-item" [routerLink]="['/eliminar-producto']">Eliminar producto</a>
+                        </div>
+                      </div>
+                
+                </li>
+                
+            </ul>
+            <span class="navbar-text">
+                <button type="button" class="btn btn-danger" (click)="cerrar_sesion();">Cerrar Sesión</button>
+              </span>
+        </div>
+</nav>
