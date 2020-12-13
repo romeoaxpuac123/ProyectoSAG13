@@ -14,6 +14,9 @@ import { ActualizarProductoComponent } from './actualizar-producto/actualizar-pr
 import { EliminarProductoComponent } from './eliminar-producto/eliminar-producto.component';
 import { ProductosProveedorComponent } from './productos-proveedor/productos-proveedor.component';
 import { ProductosClienteComponent } from './productos-cliente/productos-cliente.component';
+import { AgregarTarjetaComponent } from './agregar-tarjeta/agregar-tarjeta.component';
+import { EliminarTarjetaComponent } from './eliminar-tarjeta/eliminar-tarjeta.component';
+import { TarjetasRegistradasComponent } from './tarjetas-registradas/tarjetas-registradas.component';
 const routes: Routes = [ 
   {path:'',redirectTo:'/welcome',pathMatch:'full'},
   { path: 'welcome', component: PantallaInicialComponent },
@@ -30,6 +33,9 @@ const routes: Routes = [
   { path: 'eliminar-producto', component: EliminarProductoComponent},
   { path: 'productos-proveedor', component: ProductosProveedorComponent},
   { path: 'productos-cliente', component: ProductosClienteComponent},
+  { path: 'agregar-tarjeta', component: AgregarTarjetaComponent},
+  { path: 'eliminar-tarjeta', component: EliminarTarjetaComponent},
+  { path: 'tarjetas-registradas', component: TarjetasRegistradasComponent},
   
 ];
 
