@@ -22,6 +22,9 @@ import { ActualizarProductoComponent } from './actualizar-producto/actualizar-pr
 import { EliminarProductoComponent } from './eliminar-producto/eliminar-producto.component';
 import { ProductosProveedorComponent } from './productos-proveedor/productos-proveedor.component';
 import { ProductosClienteComponent } from './productos-cliente/productos-cliente.component';
+import { AgregarTarjetaComponent } from './agregar-tarjeta/agregar-tarjeta.component';
+import { EliminarTarjetaComponent } from './eliminar-tarjeta/eliminar-tarjeta.component';
+import { TarjetasRegistradasComponent } from './tarjetas-registradas/tarjetas-registradas.component';
 
 
 
@@ -44,7 +47,10 @@ import { ProductosClienteComponent } from './productos-cliente/productos-cliente
     ActualizarProductoComponent,
     EliminarProductoComponent,
     ProductosProveedorComponent,
-    ProductosClienteComponent
+    ProductosClienteComponent,
+    AgregarTarjetaComponent,
+    EliminarTarjetaComponent,
+    TarjetasRegistradasComponent
   ],
   imports: [
     BrowserModule,

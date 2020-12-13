@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 export class ProductosClienteService {
 
   constructor(private http:HttpClient) {  }
-  API_URI='http://35.193.123.113:4003/MostrarProductos';
+  API_URI='http://35.193.123.113:5003/MostrarProductos';
 
   get_productos(){
 
