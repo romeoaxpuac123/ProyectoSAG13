@@ -71,11 +71,7 @@ app.post('/RegistrarTarjeta',(req,res)=>{
 				let elnuevouser = 0;
 				conexion.query('SELECT * FROM Tarjeta WHERE No_Tarjeta = ? && id_cliente = ?', [parseInt(No_Tarjeta,10), parseInt(id_cliente,10)], function(error, result, fields) {
 					const myString = JSON.stringify(result);
-					var resultados = myString.split(',');
-					elnuevouser =  parseInt(resultados[0].split(':')[1]);
-					var usuariox = parseInt(resultados[1].split(':')[1]);
-					var tarjetax = parseInt(resultados[2].split(':')[1].replace('}]',''));
-					res.json({"msg":true,"user":usuariox,"tarjeta":tarjetax});
+					res.json({"msg":true,"user":id_cliente,"tarjeta":No_Tarjeta});
 				});
 				//res.json({"msg":true,"user":elnuevouser,"name":nombre});
 				
