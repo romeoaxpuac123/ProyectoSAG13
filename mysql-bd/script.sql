@@ -28,7 +28,7 @@ INSERT INTO Cliente (Nombre,Apellido,password,email,celular,fotografia)VALUES ('
 CREATE TABLE IF NOT EXISTS Tarjeta
 (
     id_tarjeta int primary key auto_increment,
-    No_Tarjeta int,
+    No_Tarjeta varchar(25),
     id_cliente int,
     FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente)
 );
@@ -40,24 +40,45 @@ CREATE TABLE IF NOT EXISTS Producto
     Precio_Venta double,
     stock int,
     categoria varchar(55),
-    imagen varchar(255),
+    imagen varchar(2255),
     precio_final double,
     id_provedor int,
+    precio_subaste double unsigned default 0.00,
+    estado int unsigned default 1,
     FOREIGN KEY (id_provedor) REFERENCES Proveedor(id_provedor)
 
 );
 
 INSERT INTO Producto (Nombre,Precio_Venta,stock,categoria,imagen,precio_final,id_provedor)VALUES ('Vaso Vengadores',8.00,100,'Cocina','https://http2.mlstatic.com/D_NQ_NP_772229-MLA41917959738_052020-W.jpg',8.80,1);
 
+CREATE TABLE IF NOT EXISTS Producto_Cliente
+(
+    id_Producto_Cliente int primary key auto_increment,
+    Nombre varchar(155),
+    Precio_Venta double,
+    stock int,
+    categoria varchar(55),
+    imagen varchar(2255),
+    precio_final double,
+    id_cliente int,
+    precio_subaste double unsigned default 0.00,
+    estado int unsigned default 1,
+    FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente)
+
+);
+INSERT INTO Producto_Cliente (Nombre,Precio_Venta,stock,categoria,imagen,precio_final,id_cliente)VALUES ('Vaso Vengadores',8.00,100,'Cocina','https://http2.mlstatic.com/D_NQ_NP_772229-MLA41917959738_052020-W.jpg',8.80,1);
+
 CREATE TABLE IF NOT EXISTS Carrito
 (
     id_carrito int primary key auto_increment,
     id_cliente int,
-    id_Producto int,
+    id_Producto int null,
+    id_Producto_Cliente int null,
     cantidad int,
     subtotal double,
     FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente),
-    FOREIGN KEY (id_Producto) REFERENCES Producto(id_Producto)
+    FOREIGN KEY (id_Producto) REFERENCES Producto(id_Producto),
+    FOREIGN KEY (id_Producto_Cliente) REFERENCES Producto_Cliente(id_Producto_Cliente)
 );
 
 CREATE TABLE IF NOT EXISTS Factura
@@ -66,6 +87,8 @@ CREATE TABLE IF NOT EXISTS Factura
     id_cliente int,
     fecha date,
     total double,
+    NIT varchar(55),
+    Direccion_De_Envio varchar(155),
     FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente)
 );
 
@@ -73,14 +96,28 @@ CREATE TABLE IF NOT EXISTS Venta
 (
     id_venta int primary key auto_increment,
     id_factura int,
-    id_Producto int,
+    id_Producto int null,
+    id_Producto_Cliente int null,
+    id_cliente int,
     cantidad int,
     subtotal double,
     FOREIGN KEY (id_factura) REFERENCES Factura(id_factura),
-    FOREIGN KEY (id_Producto) REFERENCES Producto(id_Producto)
+    FOREIGN KEY (id_Producto) REFERENCES Producto(id_Producto),
+    FOREIGN KEY (id_Producto_Cliente) REFERENCES Producto_Cliente(id_Producto_Cliente),
+    FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente)
 );
 
 
+CREATE TABLE IF NOT EXISTS Favorito
+(
+    id_Favorito int primary key auto_increment,
+    Nombre varchar(155),
+    precio_venta double,
+    id_Producto int null,
+    id_Producto_Cliente int null,
+    FOREIGN KEY (id_Producto) REFERENCES Producto(id_Producto),
+    FOREIGN KEY (id_Producto_Cliente) REFERENCES Producto_Cliente(id_Producto_Cliente)
+);
 ALTER USER 'root' IDENTIFIED WITH mysql_native_password by 'grupo13';
 GRANT ALL PRIVILEGES ON *.* to 'root'@'%' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
