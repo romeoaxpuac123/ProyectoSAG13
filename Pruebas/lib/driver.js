@@ -5,7 +5,7 @@ const expect = require('chai').expect;
 
 
 chai.use(chaiHttp);
-const url = 'http://35.193.123.113:4003/';
+const url = 'http://34.121.67.41:4003/';
 
 describe('Pruebas correctas a servicio 2: ', () => {
 
