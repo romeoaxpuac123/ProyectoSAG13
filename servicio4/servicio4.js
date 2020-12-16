@@ -92,6 +92,26 @@ app.post('/EliminarFavorito',(req,res)=>{
 	}
 });
 
+app.post('/MisFavoritos',(req,res)=>{
+	const { id } = req.body;
+	if(id){
+		console.log("Se muestran ->" + id);		
+		conexion.query('SELECT * FROM Favorito WHERE id_cliente = ?', [parseInt(id,10)], function(error, result, fields) {
+			if (result.length > 0) {
+				console.log("msg//////////////////////////// entro");
+				elnuevouser =  parseInt(id,10);
+				console.log(result)
+				res.json({result});
+			} else {
+				res.json({"msg":false,"user":0,"name":"error"});
+				
+			}			
+		});
+	}else{
+		res.json({"msg":false,"tipo":"error","user":0,"name":"error"});
+	}
+});
+
 app.listen(app.get('port'),()=>{
 	console.log('Server on port 6003');
 });
