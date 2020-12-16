@@ -36,7 +36,7 @@ app.get('/Usuario',(req,res)=>{
 
 
 app.post('/RegistrarFavorito',(req,res)=>{
-    const { Nombre,precio_venta,id_Producto} = req.body;
+    const { Nombre,precio_venta,id_Producto,id_cliente} = req.body;
 	if(Nombre && precio_venta && id_Producto){
 		console.log("Se inserta->" + id_Producto);
 		if(parseInt(id_Producto,10) >= 2000){
@@ -45,7 +45,7 @@ app.post('/RegistrarFavorito',(req,res)=>{
 					res.json({"msg":false,"user":0,"producto":"error"});
 				} else {
 					console.log("msg////////////////////////////");
-					conexion.query('INSERT INTO Favorito(Nombre, precio_venta,id_Producto_Cliente) VALUES (?,?,?)',[Nombre,parseFloat(precio_venta),parseInt(id_Producto,10)]);
+					conexion.query('INSERT INTO Favorito(Nombre, precio_venta,id_Producto_Cliente,id_cliente) VALUES (?,?,?,?)',[Nombre,parseFloat(precio_venta),parseInt(id_Producto,10),parseInt(id_cliente,10)]);
 					console.log("msg////////////////////////////");
 					res.json({"msg":true,"user":id_Producto,"producto":Nombre});
 					//res.json({"msg":true,"user":elnuevouser,"name":nombre});					
@@ -57,7 +57,7 @@ app.post('/RegistrarFavorito',(req,res)=>{
 						res.json({"msg":false,"user":0,"producto":"error"});
 				} else {
 					console.log("menor a 200");
-					conexion.query('INSERT INTO Favorito(Nombre, precio_venta,id_Producto) VALUES (?,?,?)',[Nombre,parseFloat(precio_venta),parseInt(id_Producto,10)]);
+					conexion.query('INSERT INTO Favorito(Nombre, precio_venta,id_Producto,id_cliente) VALUES (?,?,?,?)',[Nombre,parseFloat(precio_venta),parseInt(id_Producto,10),parseInt(id_cliente,10)]);
 					console.log("msg////////////////////////////");
 					res.json({"msg":true,"user":id_Producto,"producto":Nombre});
 					//res.json({"msg":true,"user":elnuevouser,"name":nombre});					
@@ -69,7 +69,6 @@ app.post('/RegistrarFavorito',(req,res)=>{
 		res.json({"msg":false,"user":0,"producto":"error"});
 	}
 });
-
 app.post('/EliminarFavorito',(req,res)=>{
     const { id_favorito} = req.body;
 	if(id_favorito){

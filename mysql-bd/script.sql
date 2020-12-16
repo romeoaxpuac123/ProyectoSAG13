@@ -116,8 +116,10 @@ CREATE TABLE IF NOT EXISTS Favorito
     precio_venta double,
     id_Producto int null,
     id_Producto_Cliente int null,
+    id_cliente int,
     FOREIGN KEY (id_Producto) REFERENCES Producto(id_Producto),
-    FOREIGN KEY (id_Producto_Cliente) REFERENCES Producto_Cliente(id_Producto_Cliente)
+    FOREIGN KEY (id_Producto_Cliente) REFERENCES Producto_Cliente(id_Producto_Cliente),
+    FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente)
 );
 ALTER USER 'root' IDENTIFIED WITH mysql_native_password by 'grupo13';
 GRANT ALL PRIVILEGES ON *.* to 'root'@'%' WITH GRANT OPTION;
