@@ -24,7 +24,7 @@ describe('Pruebas correctas a servicio 2: ', () => {
             .post('RegistrarProducto')
             .send({ nombre: "Camisa",Precio_venta: "15.00",stock:"5", categoria: "Comida", 
                      imagen: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/NCI_Visuals_Food_Hamburger.jpg/245px-NCI_Visuals_Food_Hamburger.jpg" ,
-                     id_provedor:"1" })
+                     id_provedor:"1",precio_subaste: "0.00",estado: "1" })
             .end(function (err, res) {
                 expect(res).to.have.status(200);
                 done();
