@@ -126,6 +126,136 @@ app.post('/Tarjetas',(req,res)=>{
 	}
 });
 
+app.post('/RegistrarProductoCliente',(req,res)=>{
+    const { nombre, Precio_venta,stock, categoria, imagen,id_cliente,precio_subaste,estado } = req.body;
+    var precio_final = parseFloat(Precio_venta)+((parseFloat(Precio_venta)*10)/100);
+	if(nombre && Precio_venta && stock && categoria && imagen && id_cliente){
+		console.log("Se inserta->" + nombre);		
+		conexion.query('SELECT * FROM Producto_Cliente WHERE Nombre = ?', [nombre], function(error, result, fields) {
+			if (result.length > 0) {
+				
+				//const myString = JSON.stringify(result);
+				//var resultados = myString.split(',');
+				//var user1 =  parseInt(resultados[0].split(':')[1]);
+				//var nombre = resultados[1].split(':')[1].replace('\"','').replace('\"','');
+				//console.log("RRR*****->" + resultados);
+				res.json({"msg":false,"user":0,"name":"error"});
+			} else {
+				console.log("msg////////////////////////////");
+				conexion.query('INSERT INTO Producto_Cliente (Nombre,Precio_Venta,stock,categoria,imagen,precio_final,id_cliente,precio_subaste,estado) VALUES (?,?,?,?,?,?,?,?,?)',[nombre, parseFloat(Precio_venta),parseInt(stock,10), categoria, imagen,parseFloat(precio_final), id_cliente,parseFloat(precio_subaste),parseInt(estado,10)]);
+				console.log("msg////////////////////////////");
+				let elnuevouser = 0;
+				conexion.query('SELECT * FROM Producto_Cliente WHERE Nombre = ?', [nombre], function(error, result, fields) {
+					const myString = JSON.stringify(result);
+					var resultados = myString.split(',');
+					elnuevouser =  parseInt(resultados[0].split(':')[1]);
+					res.json({"msg":true,"user":elnuevouser,"name":nombre});
+				});
+				//res.json({"msg":true,"user":elnuevouser,"name":nombre});
+				
+			}			
+		});
+	}else{
+		res.json({"msg":false,"tipo":"error","user":0,"name":"error"});
+	}
+});
+
+app.post('/ActualizarProductoCliente',(req,res)=>{
+    const { id, nombre, Precio_venta,stock, categoria, imagen,id_cliente,precio_subaste,estado } = req.body;
+    var precio_final = parseFloat(Precio_venta)+((parseFloat(Precio_venta)*10)/100);
+	if(id && nombre && Precio_venta && stock && categoria && imagen && id_cliente){
+		console.log("Se actualiza ->" + nombre);		
+		conexion.query('SELECT * FROM Producto_Cliente WHERE id_Producto_Cliente = ?', [id], function(error, result, fields) {
+			if (result.length > 0) {
+				console.log("msg//////////////////////////// entro");
+				
+				console.log("msg////////////////////////////");
+				let elnuevouser = 0;
+				conexion.query("UPDATE Producto_Cliente SET Nombre = ?, Precio_Venta = ?, stock = ?, categoria = ?, imagen = ?, precio_final = ?, id_cliente = ?, precio_subaste = ?,estado = ? WHERE id_Producto_Cliente = ?", [nombre, parseFloat(Precio_venta),parseInt(stock,10), categoria, imagen,parseFloat(precio_final),parseInt(id_cliente,10),parseFloat(precio_subaste),parseInt(estado,10),parseInt(id,10)], function(error, result, fields) {
+					
+					elnuevouser =  parseInt(id,10);
+					res.json({"msg":true,"user":elnuevouser,"name":nombre});
+				});
+				
+				
+			} else {
+				res.json({"msg":false,"user":0,"name":"error"});
+				
+			}			
+		});
+	}else{
+		res.json({"msg":false,"tipo":"error","user":0,"name":"error"});
+	}
+});
+
+app.post('/EliminarProductoCliente',(req,res)=>{
+	const { id } = req.body;
+	if(id){
+		console.log("Se elimina ->" + id);		
+		conexion.query('SELECT * FROM Producto_Cliente WHERE id_Producto_Cliente = ?', [id], function(error, result, fields) {
+			if (result.length > 0) {
+				console.log("msg//////////////////////////// entro");
+				
+				console.log("msg////////////////////////////");
+				let elnuevouser = 0;
+				conexion.query('DELETE FROM Producto_Cliente WHERE id_Producto_Cliente = ?', [parseInt(id,10)], function(error, result, fields) {
+			
+					elnuevouser =  parseInt(id,10);
+					res.json({"msg":true,"user":elnuevouser,"name":id});
+				});
+				
+				
+			} else {
+				res.json({"msg":false,"user":0,"name":"error"});
+				
+			}			
+		});
+	}else{
+		res.json({"msg":false,"tipo":"error","user":0,"name":"error"});
+	}
+	
+});
+
+app.post('/MostrarProductosCliente',(req,res)=>{
+	const { id } = req.body;
+	if(id){
+		console.log("Se muestran ->" + id);		
+		conexion.query('SELECT * FROM Producto_Cliente WHERE id_cliente = ?', [id], function(error, result, fields) {
+			if (result.length > 0) {
+				console.log("msg//////////////////////////// entro");
+				elnuevouser =  parseInt(id,10);
+				console.log(result)
+				res.json({result});
+			} else {
+				res.json({"msg":false,"user":0,"name":"error"});
+				
+			}			
+		});
+	}else{
+		res.json({"msg":false,"tipo":"error","user":0,"name":"error"});
+	}
+});
+
+
+app.post('/MostrarProductosParaVenderClientes',(req,res)=>{
+	const { id } = req.body;
+	if(id){
+		console.log("Se muestran ->" + id);		
+		conexion.query('SELECT * FROM Producto_Cliente', function(error, result, fields) {
+			if (result.length > 0) {
+				console.log("msg//////////////////////////// entro");
+				elnuevouser =  parseInt(id,10);
+				console.log(result)
+				res.json({result});
+			} else {
+				res.json({"msg":false,"user":0,"name":"error"});
+				
+			}			
+		});
+	}else{
+		res.json({"msg":false,"tipo":"error","user":0,"name":"error"});
+	}
+});
 
 
 app.listen(app.get('port'),()=>{
