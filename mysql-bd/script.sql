@@ -66,6 +66,7 @@ CREATE TABLE IF NOT EXISTS Producto_Cliente
     FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente)
 
 );
+ALTER TABLE Producto_Cliente auto_increment=2000;
 INSERT INTO Producto_Cliente (Nombre,Precio_Venta,stock,categoria,imagen,precio_final,id_cliente)VALUES ('Vaso Vengadores',8.00,100,'Cocina','https://http2.mlstatic.com/D_NQ_NP_772229-MLA41917959738_052020-W.jpg',8.80,1);
 
 CREATE TABLE IF NOT EXISTS Carrito
