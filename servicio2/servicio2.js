@@ -36,7 +36,7 @@ app.get('/reProducto',(req,res)=>{
 
 
 app.post('/RegistrarProducto',(req,res)=>{
-    const { nombre, Precio_venta,stock, categoria, imagen,id_proveedor } = req.body;
+    const { nombre, Precio_venta,stock, categoria, imagen,id_proveedor,precio_subaste,estado } = req.body;
     var precio_final = parseFloat(Precio_venta)+((parseFloat(Precio_venta)*10)/100);
 	if(nombre && Precio_venta && stock && categoria && imagen && id_proveedor){
 		console.log("Se inserta->" + nombre);		
@@ -51,7 +51,7 @@ app.post('/RegistrarProducto',(req,res)=>{
 				res.json({"msg":false,"user":0,"name":"error"});
 			} else {
 				console.log("msg////////////////////////////");
-				conexion.query('INSERT INTO Producto (Nombre,Precio_Venta,stock,categoria,imagen,precio_final,id_provedor) VALUES (?,?,?,?,?,?,?)',[nombre, parseFloat(Precio_venta),parseInt(stock,10), categoria, imagen,parseFloat(precio_final), id_proveedor]);
+				conexion.query('INSERT INTO Producto (Nombre,Precio_Venta,stock,categoria,imagen,precio_final,id_provedor,precio_subaste,estado) VALUES (?,?,?,?,?,?,?,?,?)',[nombre, parseFloat(Precio_venta),parseInt(stock,10), categoria, imagen,parseFloat(precio_final), id_proveedor,parseFloat(precio_subaste),parseInt(estado,10)]);
 				console.log("msg////////////////////////////");
 				let elnuevouser = 0;
 				conexion.query('SELECT * FROM Producto WHERE Nombre = ?', [nombre], function(error, result, fields) {
@@ -70,7 +70,7 @@ app.post('/RegistrarProducto',(req,res)=>{
 });
 
 app.post('/ActualizarProducto',(req,res)=>{
-    const { id, nombre, Precio_venta,stock, categoria, imagen,id_proveedor } = req.body;
+    const { id, nombre, Precio_venta,stock, categoria, imagen,id_proveedor,precio_subaste,estado } = req.body;
     var precio_final = parseFloat(Precio_venta)+((parseFloat(Precio_venta)*10)/100);
 	if(id && nombre && Precio_venta && stock && categoria && imagen && id_proveedor){
 		console.log("Se actualiza ->" + nombre);		
@@ -80,7 +80,7 @@ app.post('/ActualizarProducto',(req,res)=>{
 				
 				console.log("msg////////////////////////////");
 				let elnuevouser = 0;
-				conexion.query("UPDATE Producto SET Nombre = ?, Precio_Venta = ?, stock = ?, categoria = ?, imagen = ?, precio_final = ?, id_provedor = ? WHERE id_Producto = ?", [nombre, parseFloat(Precio_venta),parseInt(stock,10), categoria, imagen,parseFloat(precio_final),parseInt(id_proveedor,10), parseInt(id,10)], function(error, result, fields) {
+				conexion.query("UPDATE Producto SET Nombre = ?, Precio_Venta = ?, stock = ?, categoria = ?, imagen = ?, precio_final = ?, id_provedor = ?, precio_subaste = ?,estado = ? WHERE id_Producto = ?", [nombre, parseFloat(Precio_venta),parseInt(stock,10), categoria, imagen,parseFloat(precio_final),parseInt(id_proveedor,10),parseFloat(precio_subaste),parseInt(estado,10),parseInt(id,10)], function(error, result, fields) {
 					
 					elnuevouser =  parseInt(id,10);
 					res.json({"msg":true,"user":elnuevouser,"name":nombre});
@@ -144,6 +144,7 @@ app.post('/MostrarProductos',(req,res)=>{
 		res.json({"msg":false,"tipo":"error","user":0,"name":"error"});
 	}
 });
+
 app.listen(app.get('port'),()=>{
 	console.log('Server on port 4003');
 });
