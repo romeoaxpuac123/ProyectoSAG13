@@ -69,6 +69,7 @@ app.post('/RegistrarFavorito',(req,res)=>{
 		res.json({"msg":false,"user":0,"producto":"error"});
 	}
 });
+
 app.post('/EliminarFavorito',(req,res)=>{
     const { id_favorito} = req.body;
 	if(id_favorito){
