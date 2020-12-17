@@ -48,7 +48,7 @@ services:
       - '6003:6003'
     depends_on:
       - mysql-bd
-   servicio5:
+  servicio5:
     container_name: servicio5
     image: servicio5
     build: 
