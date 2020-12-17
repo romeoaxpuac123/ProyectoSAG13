@@ -7,7 +7,7 @@ export class LoginService {
   
   constructor(private http:HttpClient) { }
 
-  API_URI='http://35.193.123.113:3003/authProveedor';
+  API_URI='http://34.121.67.41:3003/authProveedor';
 
   GuardarUsuario(usuario:string,password:string){
 

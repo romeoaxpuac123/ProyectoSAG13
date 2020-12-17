@@ -56,6 +56,7 @@ export class ProductosProveedorComponent implements OnInit {
     this.acumulador+="<p class=\"card-text\"> Venta Q."+this.listainfo.result[i].Precio_Venta+"</p>"+"\n";
     this.acumulador+="<p class=\"card-text\"> Público Q."+this.listainfo.result[i].precio_final+"</p>"+"\n";
     this.acumulador+="<p class=\"card-text\">Stock: "+this.listainfo.result[i].stock+"</p>"+"\n";
+    this.acumulador+="<p class=\"card-text\">Estado: "+this.listainfo.result[i].estado+"</p>"+"\n";
     this.acumulador+="</div>"+"\n";
     this.acumulador+="</div>"+"\n";
     this.acumulador+="</td>"+"\n";

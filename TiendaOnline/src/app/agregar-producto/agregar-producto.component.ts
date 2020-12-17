@@ -18,6 +18,10 @@ export class AgregarProductoComponent implements OnInit {
   stock:string="";
   categoria:string="";
   imagen:string="";
+  precio_subaste:string="";
+  estado:string="";
+  vender:boolean=false;
+  subastar:boolean=false;
 
   id_proveedor:string="";
 
@@ -26,7 +30,8 @@ export class AgregarProductoComponent implements OnInit {
     'precio_venta': 'Precio del producto',
     'stock':'Cantidad de stock',
     'categoria': 'Categoria',
-    'imagen': 'URL imagen'
+    'imagen': 'URL imagen',
+    'precio_subaste':'Precio inicial subasta'
   };
 
   ngOnInit(): void {
@@ -34,6 +39,19 @@ export class AgregarProductoComponent implements OnInit {
   }
 
   registrarProducto(){
+
+    if(this.vender && this.subastar){
+      this.estado="3";
+    }else if(this.subastar){
+      this.estado="2";
+    }else if(this.vender){
+      this.estado="1";
+    }else{
+      alert("No ha seleccionado una opción de venta o subasta.");
+      return;
+    }
+
+    
     let a = localStorage.getItem("credenciales");
     if(a!=null)
       this.listainfo=JSON.parse(a);
@@ -41,7 +59,7 @@ export class AgregarProductoComponent implements OnInit {
 
     //this.nombreRecibido = this.user;
     //this.passRecibida = this.pass;
-    this.serv_add_prod.agregar_producto(this.nombre,this.precio_venta,this.stock,this.categoria,this.imagen,this.id_proveedor).subscribe(
+    this.serv_add_prod.agregar_producto(this.nombre,this.precio_venta,this.stock,this.categoria,this.imagen,this.id_proveedor,this.precio_subaste,this.estado).subscribe(
       result=>{console.log(result)
                this.listainfo=result;
                console.log(this.listainfo.msg);
@@ -56,6 +74,6 @@ export class AgregarProductoComponent implements OnInit {
       error=>{console.log(error)
       });
   }
-
-
 }
+
+
