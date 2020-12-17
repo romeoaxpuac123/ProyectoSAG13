@@ -111,6 +111,65 @@ app.post('/MisFavoritos',(req,res)=>{
 		res.json({"msg":false,"tipo":"error","user":0,"name":"error"});
 	}
 });
+app.post('/Categorias',(req,res)=>{
+	const { id } = req.body;
+	if(id){
+		console.log("Se muestran ->" + id);		
+		conexion.query('SELECT DISTINCT categoria FROM Producto', function(error, result, fields) {
+			if (result.length > 0) {
+				console.log("msg//////////////////////////// entro");
+				elnuevouser =  parseInt(id,10);
+				console.log(result)
+				res.json({result});
+			} else {
+				res.json({"msg":false,"user":0,"name":"error"});
+				
+			}			
+		});
+	}else{
+		res.json({"msg":false,"tipo":"error","user":0,"name":"error"});
+	}
+});
+
+
+app.post('/ProductosCategoriasP',(req,res)=>{
+	const { categoria } = req.body;
+	if(categoria){
+		console.log("Se muestran ->" + categoria);		
+		conexion.query('SELECT * FROM Producto WHERE categoria = ?', [categoria],function(error, result, fields) {
+			if (result.length > 0) {
+				console.log("msg//////////////////////////// entro");
+				
+				res.json({result});
+			} else {
+				res.json({"msg":false,"user":0,"name":"error"});
+				
+			}			
+		});
+	}else{
+		res.json({"msg":false,"tipo":"error","user":0,"name":"error"});
+	}
+});
+
+
+app.post('/ProductosCategoriasC',(req,res)=>{
+	const { categoria } = req.body;
+	if(categoria){
+		console.log("Se muestran ->" +categoria);		
+		conexion.query('SELECT * FROM Producto_Cliente WHERE categoria = ?', [categoria],function(error, result, fields) {
+			if (result.length > 0) {
+				console.log("msg//////////////////////////// entro");
+			
+				res.json({result});
+			} else {
+				res.json({"msg":false,"user":0,"name":"error"});
+				
+			}			
+		});
+	}else{
+		res.json({"msg":false,"tipo":"error","user":0,"name":"error"});
+	}
+});
 
 app.listen(app.get('port'),()=>{
 	console.log('Server on port 6003');
