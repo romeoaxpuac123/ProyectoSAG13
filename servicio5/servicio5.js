@@ -298,7 +298,8 @@ app.post('/Ventas',(req,res)=>{
 			
 				traspoter.sendMail(mailOption,(error,info)=>{
 					if(error){
-						res.json({"msg":false,"tipo":"error","user":0,"name":"error"});
+						console.log(error);
+						res.json({"msg":false,"tipo":"error","user":0,"name":error});
 					}
 					else{
 						console.log("Email enviado");
