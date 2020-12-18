@@ -298,17 +298,17 @@ app.post('/Ventas',(req,res)=>{
 			
 				traspoter.sendMail(mailOption,(error,info)=>{
 					if(error){
-						res.status(500).send(error.message);
+						res.json({"msg":false,"tipo":"error","user":0,"name":"error"});
 					}
 					else{
 						console.log("Email enviado");
-						res.status(200).jsonp(req.body);
+						res.json({"msg":true,"user":id,"name":"TTDD"});
 					}
 				});		
 			});	
 		});
 		
-		res.json({"msg":true,"user":id,"name":"TTDD"});
+		
 
 		
 	}else{
