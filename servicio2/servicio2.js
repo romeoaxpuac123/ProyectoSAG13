@@ -51,7 +51,7 @@ app.post('/RegistrarProducto',(req,res)=>{
 				res.json({"msg":false,"user":0,"name":"error"});
 			} else {
 				console.log("msg////////////////////////////");
-				conexion.query('INSERT INTO Producto (Nombre,Precio_Venta,stock,categoria,imagen,precio_final,id_provedor,precio_subaste,estado) VALUES (?,?,?,?,?,?,?,?,?)',[nombre, parseFloat(Precio_venta),parseInt(stock,10), categoria, imagen,parseFloat(precio_final), id_proveedor,parseFloat(precio_subaste),parseInt(estado,10)]);
+				conexion.query('INSERT INTO Producto (Nombre,Precio_Venta,stock,categoria,imagen,precio_final,id_provedor,precio_subaste,estado) VALUES (?,?,?,?,?,?,?,?,?)',[nombre, parseFloat(Precio_venta),parseInt(stock,10), categoria, imagen,parseFloat(precio_final),parseInt(id_proveedor),parseFloat(precio_subaste),parseInt(estado,10)]);
 				console.log("msg////////////////////////////");
 				let elnuevouser = 0;
 				conexion.query('SELECT * FROM Producto WHERE Nombre = ?', [nombre], function(error, result, fields) {
