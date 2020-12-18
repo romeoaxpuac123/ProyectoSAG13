@@ -142,7 +142,7 @@ app.post('/RegistrarProductoCliente',(req,res)=>{
 				res.json({"msg":false,"user":0,"name":"error"});
 			} else {
 				console.log("msg////////////////////////////");
-				conexion.query('INSERT INTO Producto_Cliente (Nombre,Precio_Venta,stock,categoria,imagen,precio_final,id_cliente,precio_subaste,estado) VALUES (?,?,?,?,?,?,?,?,?)',[nombre, parseFloat(Precio_venta),parseInt(stock,10), categoria, imagen,parseFloat(precio_final), id_cliente,parseFloat(precio_subaste),parseInt(estado,10)]);
+				conexion.query('INSERT INTO Producto_Cliente (Nombre,Precio_Venta,stock,categoria,imagen,precio_final,id_cliente,precio_subaste,estado) VALUES (?,?,?,?,?,?,?,?,?)',[nombre, parseFloat(Precio_venta),parseInt(stock,10), categoria, imagen,parseFloat(precio_final), parseInt(id_cliente,10),parseFloat(precio_subaste),parseInt(estado,10)]);
 				console.log("msg////////////////////////////");
 				let elnuevouser = 0;
 				conexion.query('SELECT * FROM Producto_Cliente WHERE Nombre = ?', [nombre], function(error, result, fields) {
