@@ -292,7 +292,7 @@ app.post('/Ventas',(req,res)=>{
 				var mailOption = {
 					from: "Remitente",
 					to: rows2[0].email,
-					subject: "Prueba",
+					subject: "Muchas Gracias",
 					text: "Gracias por tu compra :D tu factura No. " + numero_factura + " con un total de Q. " + rows[0].total + " ha sido registrada"
 				};
 			
