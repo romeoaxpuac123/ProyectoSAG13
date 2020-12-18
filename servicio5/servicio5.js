@@ -284,8 +284,8 @@ app.post('/Ventas',(req,res)=>{
 				var traspoter = nodemailer.createTransport({ 
 					service: 'gmail',
 					auth: {
-						user: 'proyectogerenciales@gmail.com',
-						pass: '123gerenciales' // naturally, replace both with your real credentials or an application-specific password
+						user: 'proyectosag13@gmail.com',
+						pass: '123cuaderno' // naturally, replace both with your real credentials or an application-specific password
 					}
 				});
 			
