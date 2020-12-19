@@ -73,6 +73,7 @@ CREATE TABLE IF NOT EXISTS Carrito
 (
     id_carrito int primary key auto_increment,
     id_cliente int,
+	Nombre varchar(155),
     id_Producto int null,
     id_Producto_Cliente int null,
     cantidad int,

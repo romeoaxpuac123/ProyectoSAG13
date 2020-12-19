@@ -133,16 +133,11 @@ app.post('/RegistrarProductoCliente',(req,res)=>{
 		console.log("Se inserta->" + nombre);		
 		conexion.query('SELECT * FROM Producto_Cliente WHERE Nombre = ?', [nombre], function(error, result, fields) {
 			if (result.length > 0) {
-				
-				//const myString = JSON.stringify(result);
-				//var resultados = myString.split(',');
-				//var user1 =  parseInt(resultados[0].split(':')[1]);
-				//var nombre = resultados[1].split(':')[1].replace('\"','').replace('\"','');
-				//console.log("RRR*****->" + resultados);
 				res.json({"msg":false,"user":0,"name":"error"});
 			} else {
 				console.log("msg////////////////////////////");
-				conexion.query('INSERT INTO Producto_Cliente (Nombre,Precio_Venta,stock,categoria,imagen,precio_final,id_cliente,precio_subaste,estado) VALUES (?,?,?,?,?,?,?,?,?)',[nombre, parseFloat(Precio_venta),parseInt(stock,10), categoria, imagen,parseFloat(precio_final), id_cliente,parseFloat(precio_subaste),parseInt(estado,10)]);
+				conexion.query('INSERT INTO Producto_Cliente (Nombre,Precio_Venta,stock,categoria,imagen,precio_final,id_cliente,precio_subaste,estado) VALUES (?,?,?,?,?,?,?,?,?)',
+																[nombre, parseFloat(Precio_venta),parseInt(stock,10), categoria, imagen,parseFloat(precio_final), parseInt(id_cliente,10),parseFloat(precio_subaste),parseInt(estado,10)]);
 				console.log("msg////////////////////////////");
 				let elnuevouser = 0;
 				conexion.query('SELECT * FROM Producto_Cliente WHERE Nombre = ?', [nombre], function(error, result, fields) {
@@ -159,7 +154,6 @@ app.post('/RegistrarProductoCliente',(req,res)=>{
 		res.json({"msg":false,"tipo":"error","user":0,"name":"error"});
 	}
 });
-
 app.post('/ActualizarProductoCliente',(req,res)=>{
     const { id, nombre, Precio_venta,stock, categoria, imagen,id_cliente,precio_subaste,estado } = req.body;
     var precio_final = parseFloat(Precio_venta)+((parseFloat(Precio_venta)*10)/100);

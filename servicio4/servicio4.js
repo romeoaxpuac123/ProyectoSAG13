@@ -36,11 +36,11 @@ app.get('/Usuario',(req,res)=>{
 
 
 app.post('/RegistrarFavorito',(req,res)=>{
-    const { Nombre,precio_venta,id_Producto,id_cliente} = req.body;
-	if(Nombre && precio_venta && id_Producto){
+    const {Nombre,precio_venta,id_Producto,id_cliente} = req.body;
+	if(id_cliente && Nombre && precio_venta && id_Producto){
 		console.log("Se inserta->" + id_Producto);
 		if(parseInt(id_Producto,10) >= 2000){
-			conexion.query('SELECT * FROM Favorito WHERE id_Producto_Cliente = ?', [parseInt(id_Producto,10)], function(error, result, fields) {
+			conexion.query('SELECT * FROM Favorito WHERE id_Producto_Cliente = ? && id_cliente = ?', [parseInt(id_Producto,10),parseInt(id_cliente,10)], function(error, result, fields) {
 				if (result.length > 0) {
 					res.json({"msg":false,"user":0,"producto":"error"});
 				} else {
@@ -52,7 +52,7 @@ app.post('/RegistrarFavorito',(req,res)=>{
 				}			
 			});
 		}else{
-			conexion.query('SELECT * FROM Favorito WHERE id_Producto = ?', [parseInt(id_Producto,10)], function(error, result, fields) {
+			conexion.query('SELECT * FROM Favorito WHERE id_Producto = ?&& id_cliente = ?', [parseInt(id_Producto,10),parseInt(id_cliente,10)], function(error, result, fields) {
 				if (result.length > 0) {
 						res.json({"msg":false,"user":0,"producto":"error"});
 				} else {
@@ -69,7 +69,6 @@ app.post('/RegistrarFavorito',(req,res)=>{
 		res.json({"msg":false,"user":0,"producto":"error"});
 	}
 });
-
 app.post('/EliminarFavorito',(req,res)=>{
     const { id_favorito} = req.body;
 	if(id_favorito){
