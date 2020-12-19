@@ -4,6 +4,7 @@ var mysql = require('mysql');
 const cors = require('cors');
 var path = require('path');
 var nodemailer = require('nodemailer');
+app.use(express.static('public'));
 //host : '172.18.0.2',
 var conexion= mysql.createConnection({
     host : '172.18.0.2',
@@ -306,6 +307,64 @@ app.post('/Ventas',(req,res)=>{
 						res.json({"msg":true,"user":id,"name":"TTDD"});
 					}
 				});		
+			});	
+		});
+		pool.query('SELECT total FROM Factura WHERE id_factura = ?;',[parseInt(numero_factura,10)], function(err, rows, fields) {
+			if (err) throw err;
+			//console.log(rows);
+			pool.query('SELECT * FROM Cliente WHERE id_cliente = ?;',[parseInt(id,10)], function(err, rows2, fields) {
+				if (err) throw err;
+				//console.log(rows);
+				//console.log(rows2);
+				var PDFDocument, doc;
+				var fs = require('fs');
+				PDFDocument = require('pdfkit');
+				doc = new PDFDocument;
+				doc.pipe(fs.createWriteStream('public/factura'+numero_factura+'.pdf'));
+				// lógica para crear el documento PDF va aquí
+					doc.fontSize(30).text('FACTURA NO. '+numero_factura, 70, 70);
+
+					// Establecemos la anchura y el tipo de alineación de nuestros parrafos.
+					doc.fontSize(15).text('CLiente: ' + rows2[0].Nombre, {
+						align: 'left' // tipo de alineación (left, center, right o justify)
+					});
+					doc.fontSize(15).text('Apellido: ' + rows2[0].Apellido, {
+						
+						align: 'left' // tipo de alineación (left, center, right o justify)
+					});
+					doc.fontSize(15).text('Email: ' + rows2[0].email, {
+						
+						align: 'left' // tipo de alineación (left, center, right o justify)
+					});
+					doc.fontSize(15).text('Celular: ' + rows2[0].celular, {
+						
+						align: 'left' // tipo de alineación (left, center, right o justify)
+					});
+					doc.fontSize(15).text('Fecha: ' + rows[0].fecha, {
+						
+						align: 'left' // tipo de alineación (left, center, right o justify)
+					});
+					doc.fontSize(15).text('NIT: ' + rows[0].NIT , {
+						
+						align: 'left' // tipo de alineación (left, center, right o justify)
+					});
+					doc.fontSize(15).text('Direccion: ' + rows[0].Direccion_De_Envio , {
+						
+						align: 'left' // tipo de alineación (left, center, right o justify)
+					});
+					doc.fontSize(15).text('Total: Q' + rows[0].total , {
+						
+						align: 'left' // tipo de alineación (left, center, right o justify)
+					});
+					doc.fontSize(20).text('CANCELADO', {
+						
+						align: 'center' // tipo de alineación (left, center, right o justify)
+					});
+					doc.fontSize(10).text('Sujeto a pagos trimestrales', {
+						
+						align: 'center' // tipo de alineación (left, center, right o justify)
+					});
+				doc.end();
 			});	
 		});
 		
