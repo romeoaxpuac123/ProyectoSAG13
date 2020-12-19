@@ -22,6 +22,7 @@ import { ClienteActualizarProductoComponent } from './cliente-actualizar-product
 import { ClienteEliminarProductoComponent } from './cliente-eliminar-producto/cliente-eliminar-producto.component';
 import { ComprarAClientesComponent } from './comprar-a-clientes/comprar-a-clientes.component';
 import { ComprarAProveedoresComponent } from './comprar-a-proveedores/comprar-a-proveedores.component';
+import { ClienteFavoritosComponent } from './cliente-favoritos/cliente-favoritos.component';
 const routes: Routes = [ 
   {path:'',redirectTo:'/welcome',pathMatch:'full'},
   { path: 'welcome', component: PantallaInicialComponent },
@@ -46,6 +47,7 @@ const routes: Routes = [
   { path: 'cl-eliminar-producto', component: ClienteEliminarProductoComponent},
   { path: 'comprar-a-clientes', component: ComprarAClientesComponent},
   { path: 'comprar-a-proveedores', component: ComprarAProveedoresComponent},
+  { path: 'cliente-favoritos', component: ClienteFavoritosComponent},
 ];
 
 @NgModule({

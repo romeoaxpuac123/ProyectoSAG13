@@ -30,6 +30,7 @@ import { ClienteActualizarProductoComponent } from './cliente-actualizar-product
 import { ClienteEliminarProductoComponent } from './cliente-eliminar-producto/cliente-eliminar-producto.component';
 import { ComprarAClientesComponent } from './comprar-a-clientes/comprar-a-clientes.component';
 import { ComprarAProveedoresComponent } from './comprar-a-proveedores/comprar-a-proveedores.component';
+import { ClienteFavoritosComponent } from './cliente-favoritos/cliente-favoritos.component';
 
 
 
@@ -60,7 +61,8 @@ import { ComprarAProveedoresComponent } from './comprar-a-proveedores/comprar-a-
     ClienteActualizarProductoComponent,
     ClienteEliminarProductoComponent,
     ComprarAClientesComponent,
-    ComprarAProveedoresComponent
+    ComprarAProveedoresComponent,
+    ClienteFavoritosComponent
   ],
   imports: [
     BrowserModule,
