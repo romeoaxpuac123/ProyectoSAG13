@@ -25,6 +25,11 @@ import { ProductosClienteComponent } from './productos-cliente/productos-cliente
 import { AgregarTarjetaComponent } from './agregar-tarjeta/agregar-tarjeta.component';
 import { EliminarTarjetaComponent } from './eliminar-tarjeta/eliminar-tarjeta.component';
 import { TarjetasRegistradasComponent } from './tarjetas-registradas/tarjetas-registradas.component';
+import { ClienteAgregarProductoComponent } from './cliente-agregar-producto/cliente-agregar-producto.component';
+import { ClienteActualizarProductoComponent } from './cliente-actualizar-producto/cliente-actualizar-producto.component';
+import { ClienteEliminarProductoComponent } from './cliente-eliminar-producto/cliente-eliminar-producto.component';
+import { ComprarAClientesComponent } from './comprar-a-clientes/comprar-a-clientes.component';
+import { ComprarAProveedoresComponent } from './comprar-a-proveedores/comprar-a-proveedores.component';
 
 
 
@@ -50,7 +55,12 @@ import { TarjetasRegistradasComponent } from './tarjetas-registradas/tarjetas-re
     ProductosClienteComponent,
     AgregarTarjetaComponent,
     EliminarTarjetaComponent,
-    TarjetasRegistradasComponent
+    TarjetasRegistradasComponent,
+    ClienteAgregarProductoComponent,
+    ClienteActualizarProductoComponent,
+    ClienteEliminarProductoComponent,
+    ComprarAClientesComponent,
+    ComprarAProveedoresComponent
   ],
   imports: [
     BrowserModule,

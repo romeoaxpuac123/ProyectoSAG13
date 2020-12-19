@@ -17,6 +17,11 @@ import { ProductosClienteComponent } from './productos-cliente/productos-cliente
 import { AgregarTarjetaComponent } from './agregar-tarjeta/agregar-tarjeta.component';
 import { EliminarTarjetaComponent } from './eliminar-tarjeta/eliminar-tarjeta.component';
 import { TarjetasRegistradasComponent } from './tarjetas-registradas/tarjetas-registradas.component';
+import { ClienteAgregarProductoComponent } from './cliente-agregar-producto/cliente-agregar-producto.component';
+import { ClienteActualizarProductoComponent } from './cliente-actualizar-producto/cliente-actualizar-producto.component';
+import { ClienteEliminarProductoComponent } from './cliente-eliminar-producto/cliente-eliminar-producto.component';
+import { ComprarAClientesComponent } from './comprar-a-clientes/comprar-a-clientes.component';
+import { ComprarAProveedoresComponent } from './comprar-a-proveedores/comprar-a-proveedores.component';
 const routes: Routes = [ 
   {path:'',redirectTo:'/welcome',pathMatch:'full'},
   { path: 'welcome', component: PantallaInicialComponent },
@@ -36,7 +41,11 @@ const routes: Routes = [
   { path: 'agregar-tarjeta', component: AgregarTarjetaComponent},
   { path: 'eliminar-tarjeta', component: EliminarTarjetaComponent},
   { path: 'tarjetas-registradas', component: TarjetasRegistradasComponent},
-  
+  { path: 'cl-agregar-producto', component: ClienteAgregarProductoComponent},
+  { path: 'cl-actualizar-producto', component: ClienteActualizarProductoComponent},
+  { path: 'cl-eliminar-producto', component: ClienteEliminarProductoComponent},
+  { path: 'comprar-a-clientes', component: ComprarAClientesComponent},
+  { path: 'comprar-a-proveedores', component: ComprarAProveedoresComponent},
 ];
 
 @NgModule({

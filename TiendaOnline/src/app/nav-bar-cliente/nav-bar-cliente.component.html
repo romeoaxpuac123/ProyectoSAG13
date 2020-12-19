@@ -27,10 +27,33 @@
                       </div>
                 </li>
                 <li class="nav-item">
-                    <a id="linkRegister" class="nav-link" [routerLink]="['/productos-cliente']">Comprar</a>
+                    <div class="dropdown">
+                        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Comprar
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background-color: rgb(146, 158, 212);">
+                            <a class="dropdown-item" [routerLink]="['/tarjetas-registradas']">Productos de clientes</a>
+                          <a class="dropdown-item" [routerLink]="['/comprar-a-proveedores']">Productos de proveedores</a>
+  
+                        </div>
+                      </div>
                 </li>
                 <li class="nav-item">
                     <a id="linkRegister" class="nav-link" [routerLink]="['/']">Mi Carrito</a>
+                </li>
+
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Vender productos
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background-color:rgb(146, 158, 212);">
+                          <a class="dropdown-item" [routerLink]="['/productos-proveedor']">Mis productos</a>
+                          <a class="dropdown-item" [routerLink]="['/cl-agregar-producto']">Agregar producto</a>
+                          <a class="dropdown-item" [routerLink]="['/cl-actualizar-producto']">Editar producto</a>
+                          <a class="dropdown-item" [routerLink]="['/cl-eliminar-producto']">Eliminar producto</a>
+                        </div>
+                      </div>
                 </li>
             
             </ul>

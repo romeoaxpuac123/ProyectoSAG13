@@ -50,7 +50,7 @@ export class ActualizarProductoComponent implements OnInit {
       alert("No ha seleccionado una opción de venta o subasta.");
       return;
     }
-    alert("valor de estado: "+this.estado);
+    //alert("valor de estado: "+this.estado);
     let a = localStorage.getItem("credenciales");
     if(a!=null)
       this.listainfo=JSON.parse(a);
