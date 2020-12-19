@@ -1,17 +1,11 @@
 ---
-- hosts: 34.121.67.41
+- hosts: localhost
   become: true
 
   tasks:
     - name: Install npm
       apt:
        name: npm
-       state: present
-
-    - name: Install Angular
-      npm:
-       name: "@angular/cli@10"
-       global: yes
        state: present
 
     - name: Install aptitude using apt
