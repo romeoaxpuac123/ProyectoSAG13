@@ -10,8 +10,8 @@
             <p class="card-text">{{vec[0]}}</p>
             <p class="card-text">{{"Stock "+vec[9]}}</p>
             <p class="card-text">{{"Q."+vec[7]}}</p>
-            <button button type="button" class="btn btn-warning" (click)='agregar_favoritos(id_cliente,vec[0],vec[7],vec[4])'>☆</button>
-            <button *ngIf="vec[3]==1" button type="button" class="btn btn-dark" (click)='comprar(id_cliente,vec[0],vec[4],vec[7])'>🛒</button>
+            <button button type="button" class="btn btn-warning" (click)='agregar_favoritos(id_cliente,vec[0],vec[7],vec[4])' title="Añadir a favoritos">☆</button>
+            <button *ngIf="vec[3]==1" button type="button" class="btn btn-dark" (click)='comprar(id_cliente,vec[0],vec[4],vec[7])' title="Agregar al carrito">🛒</button>
             <button *ngIf="vec[3]==3" button type="button" class="btn btn-success" >Ofertar</button>
             <br>
             </div>

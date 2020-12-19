@@ -13,12 +13,12 @@ export class ClienteActualizarProductoComponent implements OnInit {
   listainfo:any=[];
   id:string="";
   nombre:string="";
-  precio_venta:string="";
+  precio_venta:string="0";
   stock:string="";
   categoria:string="";
   imagen:string="";
 
-  precio_subaste:string="";
+  precio_subaste:string="0";
   estado:string="";
   vender:boolean=false;
   subastar:boolean=false;

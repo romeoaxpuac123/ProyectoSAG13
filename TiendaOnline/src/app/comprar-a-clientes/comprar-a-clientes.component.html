@@ -1,25 +1,25 @@
 <app-nav-bar-cliente></app-nav-bar-cliente>
 
-<div class='container' style="padding-bottom:20px; ">
-    <form>
-        <br>
-        <br>
-        <br>
-        <div align="center">
-          <h3>Eliminar un producto</h3>
-        </div>
-        <br>
-        <br>
-        <br>
-      <div class="form-group"  >
-          
-      
-        </div>
 
-        <br>
-        <br>
-        <br>
-        <br>
-    </form>
-  </div>
+  <div class="container">
+    <div class="row row-cols-5" >
+        <div *ngFor="let vec of vector_aux;" class="col"  style=" padding:20px; ">
+            <div class="card" >
+                <img class="card-img-top" src={{vec[5]}} width="auto" height="220px" alt="">
+            <div class="card-body">
+            <p class="card-text">{{vec[1]}}</p>
+            <p class="card-text">{{"Stock "+vec[3]}}</p>
+            <p class="card-text">{{"Q."+vec[6]}}</p>
+            <button button type="button" class="btn btn-warning" (click)='agregar_favoritos(id_cliente,vec[1],vec[2],vec[0])' title="Añadir a favoritos">☆</button>
+            <button *ngIf="vec[9]==1" button type="button" class="btn btn-dark" (click)='comprar(id_cliente,vec[1],vec[0],vec[6])' title="Agregar al carrito">🛒</button>
+            <button *ngIf="vec[9]==3" button type="button" class="btn btn-success" >Ofertar</button>
+            <br>
+            </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
 <app-pie-pagina></app-pie-pagina>
