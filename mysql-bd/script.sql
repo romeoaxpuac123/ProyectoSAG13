@@ -122,6 +122,13 @@ CREATE TABLE IF NOT EXISTS Favorito
     FOREIGN KEY (id_Producto_Cliente) REFERENCES Producto_Cliente(id_Producto_Cliente),
     FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente)
 );
+
+CREATE TABLE IF NOT EXISTS LogApuesta(
+    LogApuesta int primary key auto_increment,
+    id_cliente int,
+    id_Producto int
+);
+
 ALTER USER 'root' IDENTIFIED WITH mysql_native_password by 'grupo13';
 GRANT ALL PRIVILEGES ON *.* to 'root'@'%' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
