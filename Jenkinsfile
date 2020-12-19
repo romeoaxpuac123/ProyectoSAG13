@@ -9,6 +9,11 @@ pipeline {
 					
 				'''
             }
+        }
+		stage('Ansible') {
+           steps {
+                sh 'cd Ansible; npm install; ansible-playbook ansibleConfigurations.yml'
+            }
         }		
 		stage('Construyendo Contenedores') {
             steps {
