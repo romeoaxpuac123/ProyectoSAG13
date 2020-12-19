@@ -43,7 +43,7 @@ app.post('/AgregarACarrito',(req,res)=>{
 	if(id_cliente && Nombre && id_Producto && cantidad && precio){
 		console.log("Se inserta->" + id_Producto);
 		if(parseInt(id_Producto,10) >= 2000){
-			conexion.query('SELECT * FROM Carrito WHERE id_Producto_Cliente = ?', [parseInt(id_Producto,10)], function(error, result, fields) {
+			conexion.query('SELECT * FROM Carrito WHERE id_Producto_Cliente = ? && id_cliente = ?', [parseInt(id_Producto,10),parseInt(id_cliente,10)], function(error, result, fields) {
 				if (result.length > 0) {
 					res.json({"msg":false,"user":0,"producto":"error"});
 				} else {
@@ -55,7 +55,7 @@ app.post('/AgregarACarrito',(req,res)=>{
 				}			
 			});
 		}else{
-			conexion.query('SELECT * FROM Carrito WHERE id_Producto = ?', [parseInt(id_Producto,10)], function(error, result, fields) {
+			conexion.query('SELECT * FROM Carrito WHERE id_Producto = ? && id_cliente = ?', [parseInt(id_Producto,10),parseInt(id_cliente,10)], function(error, result, fields) {
 				if (result.length > 0) {
 					res.json({"msg":false,"user":0,"producto":"error"});
 				} else {
