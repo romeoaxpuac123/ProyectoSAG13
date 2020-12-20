@@ -4,24 +4,28 @@
   <div class="container">
         <br>
         <br>
-        <h2 align="center">Mis favoritos</h2>
+        <h2 align="center">Carrito de compras</h2>
         <br>
+        <div style="padding: 20;" align="center">
+        <button type="button" class="btn btn-success" (click)="verificar_stock();">Finalizar compra</button>
+        </div>
         <br>
         <table class="table table-striped">
             <thead>
               <tr>
                 
                 <th>Nombre</th>
-                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>subtotal</th>
                 <th>Acción</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let vec of vector_aux;">
-              
-                <td>{{vec[1]}}</td>
                 <td>{{vec[2]}}</td>
-                <td><button type="button" class="btn btn-danger" (click)='eliminar_fav(vec[0]);' >Quitar</button></td>    
+                <td>{{vec[5]}}</td>
+                <td>{{"Q. "+vec[6]}}</td>
+                <td><button type="button" class="btn btn-danger" (click)='eliminar(vec[0]);' >Quitar</button></td>    
               </tr>
               
             </tbody>
@@ -32,4 +36,3 @@
 
 
 <app-pie-pagina></app-pie-pagina>
-

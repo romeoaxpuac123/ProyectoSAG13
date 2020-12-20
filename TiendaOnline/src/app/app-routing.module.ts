@@ -23,6 +23,9 @@ import { ClienteEliminarProductoComponent } from './cliente-eliminar-producto/cl
 import { ComprarAClientesComponent } from './comprar-a-clientes/comprar-a-clientes.component';
 import { ComprarAProveedoresComponent } from './comprar-a-proveedores/comprar-a-proveedores.component';
 import { ClienteFavoritosComponent } from './cliente-favoritos/cliente-favoritos.component';
+import { CarritoComponent } from './carrito/carrito.component';
+import { DatosFacturaComponent } from './datos-factura/datos-factura.component';
+import { PagarFacturaComponent } from './pagar-factura/pagar-factura.component';
 const routes: Routes = [ 
   {path:'',redirectTo:'/welcome',pathMatch:'full'},
   { path: 'welcome', component: PantallaInicialComponent },
@@ -48,6 +51,9 @@ const routes: Routes = [
   { path: 'comprar-a-clientes', component: ComprarAClientesComponent},
   { path: 'comprar-a-proveedores', component: ComprarAProveedoresComponent},
   { path: 'cliente-favoritos', component: ClienteFavoritosComponent},
+  { path: 'carrito', component: CarritoComponent},
+  { path: 'datos-factura', component: DatosFacturaComponent},
+  { path: 'pagar-factura', component: PagarFacturaComponent}
 ];
 
 @NgModule({

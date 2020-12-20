@@ -31,6 +31,9 @@ import { ClienteEliminarProductoComponent } from './cliente-eliminar-producto/cl
 import { ComprarAClientesComponent } from './comprar-a-clientes/comprar-a-clientes.component';
 import { ComprarAProveedoresComponent } from './comprar-a-proveedores/comprar-a-proveedores.component';
 import { ClienteFavoritosComponent } from './cliente-favoritos/cliente-favoritos.component';
+import { CarritoComponent } from './carrito/carrito.component';
+import { DatosFacturaComponent } from './datos-factura/datos-factura.component';
+import { PagarFacturaComponent } from './pagar-factura/pagar-factura.component';
 
 
 
@@ -62,7 +65,10 @@ import { ClienteFavoritosComponent } from './cliente-favoritos/cliente-favoritos
     ClienteEliminarProductoComponent,
     ComprarAClientesComponent,
     ComprarAProveedoresComponent,
-    ClienteFavoritosComponent
+    ClienteFavoritosComponent,
+    CarritoComponent,
+    DatosFacturaComponent,
+    PagarFacturaComponent
   ],
   imports: [
     BrowserModule,

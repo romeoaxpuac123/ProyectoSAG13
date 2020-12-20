@@ -7,7 +7,7 @@ export class TarjetasRegistradasService {
 
   
   constructor(private http:HttpClient) {  }
-  API_URI='http://35.193.123.113:5003/Tarjetas';
+  API_URI='http://34.121.67.41:5003/Tarjetas';
 
   obtener_tarjetas(id_cliente:string){
 
