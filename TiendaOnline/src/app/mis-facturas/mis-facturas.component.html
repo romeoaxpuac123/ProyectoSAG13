@@ -1,0 +1,41 @@
+<app-nav-bar-cliente></app-nav-bar-cliente>
+
+
+  <div class="container">
+        <br>
+        <br>
+        <h2 align="center">Mis facturas</h2>
+        <br>
+        <br>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                
+                <th>Número de factura</th>
+                <th>Fecha</th>
+                <th>Total</th>
+                <th>NIT</th>
+                <th>Dirección de envío</th>
+                <th>Enlace</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let vec of vector_aux;">
+              
+                <td>{{vec[0]}}</td>
+                <td>{{vec[1]}}</td>
+                <td>{{"Q. "+vec[2]}}</td>
+                <td>{{vec[3]}}</td>
+                <td>{{vec[4]}}</td>
+                <td><a href="{{vec[5]}}">Descargar</a></td>
+                    
+              </tr>
+              
+            </tbody>
+          </table>
+        <br>
+        <br>
+</div>
+
+
+<app-pie-pagina></app-pie-pagina>

@@ -9,10 +9,11 @@
             <div class="card-body">
             <p class="card-text">{{vec[0]}}</p>
             <p class="card-text">{{"Stock "+vec[9]}}</p>
-            <p class="card-text">{{"Q."+vec[7]}}</p>
+            <p *ngIf="vec[3]==1" class="card-text">{{"Q."+vec[7]}}</p>
+            <p *ngIf="vec[3]==2" class="card-text">{{"Subasta Q."+vec[8]}}</p>
             <button button type="button" class="btn btn-warning" (click)='agregar_favoritos(id_cliente,vec[0],vec[7],vec[4])' title="Añadir a favoritos">☆</button>
             <button *ngIf="vec[3]==1" button type="button" class="btn btn-dark" (click)='comprar(id_cliente,vec[0],vec[4],vec[7])' title="Agregar al carrito">🛒</button>
-            <button *ngIf="vec[3]==3" button type="button" class="btn btn-success" >Ofertar</button>
+            <button *ngIf="vec[3]==2" button type="button" class="btn btn-success" (click)='ofertar(id_cliente,vec[4])'>Ofertar</button>
             <br>
             </div>
             </div>

@@ -1,16 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import {ProductosProveedorService} from "../servicios/productos-proveedor.service";
+import {SubastasService} from "../servicios/subastas.service";
 @Component({
   selector: 'app-productos-proveedor',
   templateUrl: './productos-proveedor.component.html',
   styleUrls: ['./productos-proveedor.component.css']
 })
 export class ProductosProveedorComponent implements OnInit {
-  listainfo:any=[];
+  listainfo: any = [];
+  respuesta_productos: any = [];
+  vector_aux: any = [];
+  respuesta_sub: any = [];
   credenciales:any=[];
   id_proveedor:string="";
   acumulador:string="";
-  constructor(private servprod:ProductosProveedorService) { }
+  constructor(private servprod:ProductosProveedorService,private servsub:SubastasService) { }
 
   ngOnInit(): void {
     let a = localStorage.getItem("credenciales");
@@ -25,8 +29,13 @@ export class ProductosProveedorComponent implements OnInit {
       result=>{console.log(result)
                //console.log(this.listainfo.msg);
                if(result!=null){
-                this.listainfo=result;
-                this.crear_grid();
+                this.respuesta_productos=result;
+                console.log(this.listainfo);
+                let i = 0;
+          while (this.respuesta_productos.result[i] != undefined) {
+            this.vector_aux.push([this.respuesta_productos.result[i].Nombre, this.respuesta_productos.result[i].Precio_Venta, this.respuesta_productos.result[i].categoria, this.respuesta_productos.result[i].estado, this.respuesta_productos.result[i].id_Producto, this.respuesta_productos.result[i].id_proveedor, this.respuesta_productos.result[i].imagen, this.respuesta_productos.result[i].precio_final, this.respuesta_productos.result[i].precio_subaste, this.respuesta_productos.result[i].stock]);
+            i++;
+          }
                }else{
                 alert("No se obtuvieron productos");
 
@@ -36,41 +45,25 @@ export class ProductosProveedorComponent implements OnInit {
       });
   }
 
-  crear_grid(){
-  this.acumulador="";
-    let i=0;
-    let col=1;
-    this.acumulador+="<table class=\"table table-striped\">"+"\n";
-    
-    while(this.listainfo.result[i]!=undefined){
-      console.log(this.listainfo.result[i].Nombre);
-    if(col==1){
-      this.acumulador+="<tr>"+"\n";
-    }
-    this.acumulador+="<td>"+"\n";   
-    this.acumulador+="<div class=\"card\">"+"\n";
-    this.acumulador+="<img class=\"card-img-top\" src=\""+this.listainfo.result[i].imagen+"\" width=\"auto\" height=\"220px\" alt=\"\">"+"\n";
-    this.acumulador+="<div class=\"card-body\">"+"\n";
-    this.acumulador+="<p class=\"card-text\">"+this.listainfo.result[i].Nombre+"</p>"+"\n";
-    this.acumulador+="<p class=\"card-text\">Código: "+this.listainfo.result[i].id_Producto+"</p>"+"\n";
-    this.acumulador+="<p class=\"card-text\"> Venta Q."+this.listainfo.result[i].Precio_Venta+"</p>"+"\n";
-    this.acumulador+="<p class=\"card-text\"> Público Q."+this.listainfo.result[i].precio_final+"</p>"+"\n";
-    this.acumulador+="<p class=\"card-text\">Stock: "+this.listainfo.result[i].stock+"</p>"+"\n";
-    this.acumulador+="<p class=\"card-text\">Estado: "+this.listainfo.result[i].estado+"</p>"+"\n";
-    this.acumulador+="</div>"+"\n";
-    this.acumulador+="</div>"+"\n";
-    this.acumulador+="</td>"+"\n";
-    if(col==5){
-      this.acumulador+="</tr>"+"\n";
-      col=0;
-    }
-    col++;
-    i++;
-    }
-    
-    this.acumulador+="</table>"+"\n";
 
+  cerrar_subasta(Nombre:string,id_Producto:string,cantidad:string,precio:string){
     
+    this.servsub.cerrar_apuesta(Nombre,id_Producto,cantidad,precio).subscribe(
+      result=>{console.log(result)
+               //console.log(this.listainfo.msg);
+               if(result!=null){
+                this.respuesta_sub=result;
+                console.log(this.respuesta_sub);
+                
+               }else{
+                alert("Algo salio mal");
+
+               }
+      },
+      error=>{console.log(error)
+      });
+
+
 
   }
 

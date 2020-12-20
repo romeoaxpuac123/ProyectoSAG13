@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GetProductosProveedoresService } from "../servicios/get-productos-proveedores.service";
 import { AgregarAlCarritoService } from '../servicios/agregar-al-carrito.service';
 import { AgregarAFavoritosService } from '../servicios/agregar-a-favoritos.service';
+import { SubastasService } from '../servicios/subastas.service';
 @Component({
   selector: 'app-comprar-a-proveedores',
   templateUrl: './comprar-a-proveedores.component.html',
@@ -12,7 +13,8 @@ export class ComprarAProveedoresComponent implements OnInit {
   respuesta_productos: any = [];
   respuesta_carrito: any = [];
   respuesta_fav: any = [];
-  constructor(private servprod: GetProductosProveedoresService, private addCarrito: AgregarAlCarritoService, private addFavoritos: AgregarAFavoritosService) { }
+  respuesta_sub: any = [];
+  constructor(private servprod: GetProductosProveedoresService, private addCarrito: AgregarAlCarritoService, private addFavoritos: AgregarAFavoritosService, private subastas: SubastasService) { }
   result: any = [];
   vector_aux: any = [];
   cont = 0;
@@ -62,7 +64,7 @@ export class ComprarAProveedoresComponent implements OnInit {
         this.respuesta_carrito = result;
         console.log(this.respuesta_carrito);
         if (this.respuesta_carrito.msg == true) {
-          alert("todo tranquilo todo normal");
+          alert("Se agregó");
         } else {
           alert("Hubo un error");
 
@@ -90,6 +92,35 @@ export class ComprarAProveedoresComponent implements OnInit {
         console.log(error)
       });
 
+  }
+
+
+  //Ofertar
+  ofertar(id_cliente: string, id_Producto: string) {
+    let propuesta = "";
+    let a = prompt("Ingrese su oferta", "0");
+    if (a != null) {
+      propuesta = a;
+    }
+   // alert("codigo "+id_cliente+"producto "+id_Producto+"apuesta "+propuesta);
+
+    
+    this.subastas.apostar(id_cliente,id_Producto,propuesta).subscribe(
+      result => {
+        this.respuesta_sub = result;
+        console.log(this.respuesta_sub);
+        if (this.respuesta_sub.msg == true) {
+          alert("Se envió la oferta");
+          window.location.reload();
+        } else {
+          alert("Hubo un error");
+
+        }
+      },
+      error => {
+        console.log(error)
+      });
+      
   }
 
 }

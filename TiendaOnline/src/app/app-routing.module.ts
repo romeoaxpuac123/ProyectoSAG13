@@ -26,6 +26,8 @@ import { ClienteFavoritosComponent } from './cliente-favoritos/cliente-favoritos
 import { CarritoComponent } from './carrito/carrito.component';
 import { DatosFacturaComponent } from './datos-factura/datos-factura.component';
 import { PagarFacturaComponent } from './pagar-factura/pagar-factura.component';
+import { MisFacturasComponent } from './mis-facturas/mis-facturas.component';
+import { MisComprasComponent } from './mis-compras/mis-compras.component';
 const routes: Routes = [ 
   {path:'',redirectTo:'/welcome',pathMatch:'full'},
   { path: 'welcome', component: PantallaInicialComponent },
@@ -53,7 +55,9 @@ const routes: Routes = [
   { path: 'cliente-favoritos', component: ClienteFavoritosComponent},
   { path: 'carrito', component: CarritoComponent},
   { path: 'datos-factura', component: DatosFacturaComponent},
-  { path: 'pagar-factura', component: PagarFacturaComponent}
+  { path: 'pagar-factura', component: PagarFacturaComponent},
+  { path: 'mis-facturas', component: MisFacturasComponent},
+  { path: 'mis-compras', component: MisComprasComponent}
 ];
 
 @NgModule({

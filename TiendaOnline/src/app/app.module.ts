@@ -34,6 +34,8 @@ import { ClienteFavoritosComponent } from './cliente-favoritos/cliente-favoritos
 import { CarritoComponent } from './carrito/carrito.component';
 import { DatosFacturaComponent } from './datos-factura/datos-factura.component';
 import { PagarFacturaComponent } from './pagar-factura/pagar-factura.component';
+import { MisFacturasComponent } from './mis-facturas/mis-facturas.component';
+import { MisComprasComponent } from './mis-compras/mis-compras.component';
 
 
 
@@ -68,7 +70,9 @@ import { PagarFacturaComponent } from './pagar-factura/pagar-factura.component';
     ClienteFavoritosComponent,
     CarritoComponent,
     DatosFacturaComponent,
-    PagarFacturaComponent
+    PagarFacturaComponent,
+    MisFacturasComponent,
+    MisComprasComponent
   ],
   imports: [
     BrowserModule,
