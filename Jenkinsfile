@@ -5,14 +5,14 @@ pipeline {
 		stage('Probando Repositorio') {
             steps {
                 sh '''
-					bash -c ls node_modules
+					bash -c ls
 					
 				'''
             }
         }
 		stage('Ansible') {
            steps {
-                sh 'cd Ansible; ansible-playbook ansibleConfigurations.yml'
+                sh 'ansible-playbook ansibleConfigurations.yml'
             }
         }		
 		stage('Construyendo Contenedores') {
