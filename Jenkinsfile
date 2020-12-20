@@ -12,7 +12,7 @@ pipeline {
         }
 		stage('Ansible') {
            steps {
-                sh 'cd Ansible; asible-playbook ansibleConfigurations.yml'
+                sh 'cd Ansible; ansible-playbook ansibleConfigurations.yml'
             }
         }		
 		stage('Construyendo Contenedores') {
