@@ -126,7 +126,9 @@ CREATE TABLE IF NOT EXISTS Favorito
 CREATE TABLE IF NOT EXISTS LogApuesta(
     LogApuesta int primary key auto_increment,
     id_cliente int,
-    id_Producto int
+    id_Producto int,
+    Subastado double,
+    imagen varchar(2555)
 );
 
 ALTER USER 'root' IDENTIFIED WITH mysql_native_password by 'grupo13';

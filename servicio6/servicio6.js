@@ -44,7 +44,7 @@ app.post('/Apostar',(req,res)=>{
 			conexion.query('SELECT * FROM Producto_Cliente WHERE id_Producto_Cliente = ?', [parseInt(id_Producto,10)], function(error, result, fields) {
 				if (result.length > 0) {
 					conexion.query('UPDATE Producto_Cliente SET precio_subaste = ? WHERE id_Producto_Cliente = ?',[parseFloat(precio_subaste),parseInt(id_Producto,10)]);
-					conexion.query('INSERT INTO LogApuesta(id_cliente, id_Producto) VALUES (?,?)',[parseInt(id_cliente,10),parseInt(id_Producto,10)]);
+					conexion.query('INSERT INTO LogApuesta(id_cliente, id_Producto,Subastado,imagen ) VALUES (?,?,?,?)',[parseInt(id_cliente,10),parseInt(id_Producto,10),parseFloat(precio_subaste),result[0].imagen ]);
 					res.json({"msg":true,"user":"apuesta_correcta","apuesta":"correcta"});
 				} else {
 
@@ -56,7 +56,7 @@ app.post('/Apostar',(req,res)=>{
 			conexion.query('SELECT * FROM Producto WHERE id_Producto= ?', [parseInt(id_Producto,10)], function(error, result, fields) {
 				if (result.length > 0) {
 					conexion.query('UPDATE Producto SET precio_subaste = ? WHERE id_Producto = ?',[parseFloat(precio_subaste),parseInt(id_Producto,10)]);
-					conexion.query('INSERT INTO LogApuesta(id_cliente, id_Producto) VALUES (?,?)',[parseInt(id_cliente,10),parseInt(id_Producto,10)]);
+					conexion.query('INSERT INTO LogApuesta(id_cliente, id_Producto,Subastado,imagen ) VALUES (?,?,?,?)',[parseInt(id_cliente,10),parseInt(id_Producto,10),parseFloat(precio_subaste),result[0].imagen ]);
 					res.json({"msg":true,"user":"apuesta_correcta","apuesta":"correcta"});
 				} else {
 
@@ -70,8 +70,6 @@ app.post('/Apostar',(req,res)=>{
 		res.json({"msg":false,"user":0,"producto":"error"});
 	}
 });
-
-
 app.post('/FinApuesta',(req,res)=>{
 	const {Nombre,id_Producto,cantidad,precio} = req.body;
 	let id_cliente = 0;
@@ -206,6 +204,25 @@ app.post('/MisCompras',(req,res)=>{
 	}
 });
 
+
+app.post('/MisApuestas',(req,res)=>{
+	const { id } = req.body;
+	if(id){
+		console.log("Se muestran ->" + id);		
+		conexion.query('SELECT * FROM LogApuesta WHERE id_cliente = ?', [parseInt(id,10)],function(error, result, fields) {
+			if (result.length > 0) {
+				
+				res.json({result});
+			} else {
+	
+				//res.json({"msg":true,"user":elnuevouser,"name":nombre});
+				res.json({"msg":false,"user":0,"productox":"error"});					
+			}
+		});
+	}else{
+		res.json({"msg":false,"tipo":"error","user":0,"name":"error"});
+	}
+});
 
 app.listen(app.get('port'),()=>{
 	console.log('Server on port 8003');
