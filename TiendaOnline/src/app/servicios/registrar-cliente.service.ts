@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 export class RegistrarClienteService {
 
   constructor(private http:HttpClient) { }
-  API_URI='http://35.193.123.113:3003/regisCliente';
+  API_URI='http://34.121.67.41:3003/regisCliente';
 
   enviarDatos(nombre:string,apellido:string,password:string,email:string,celular:string,foto:string){
 

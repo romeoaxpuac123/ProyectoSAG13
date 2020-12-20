@@ -15,7 +15,7 @@
             <input type='text' class='form-control' [placeholder]='placeholders.nombre' name='Nombre' [(ngModel)]="nombre">
           </div>
           <div class="form-group">
-            <input type='text' class='form-control' [placeholder]='placeholders.precio_venta' name='Precio_venta' [(ngModel)]="precio_venta">
+            <input *ngIf="vender==true" type='text' class='form-control' [placeholder]='placeholders.precio_venta' name='Precio_venta' [(ngModel)]="precio_venta">
           </div>
           <div class="form-group">
             <input type='text' class='form-control' [placeholder]='placeholders.stock' name='Stock' [(ngModel)]="stock">
@@ -26,6 +26,28 @@
           <div class="form-group">
             <input type='text' class='form-control' [placeholder]='placeholders.imagen' name='Imagen' [(ngModel)]="imagen">
           </div>
+
+          <div class="form-group">
+            <input *ngIf="subastar==true" type='text' class='form-control' [placeholder]='placeholders.precio_subaste' name='Precio_subaste' [(ngModel)]="precio_subaste">
+          </div>
+
+          <div class="form-group">
+          <div class="card" style="padding: 15px;">
+
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" name="check1" id="check1" value=true  [(ngModel)]="vender">
+              <label class="form-check-label" for="check1">Vender</label>
+            </div>
+            
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" name="check2" id="check2" value=true [(ngModel)]="subastar">
+              <label class="form-check-label" for="check2">Subastar</label>
+            </div>
+          
+          </div>
+
+        </div>
+
           <div class="form-group">
             <input type='button' (click)='actualizarProducto();' class='btn btn-primary' #sendButton value='Guardar'>
             </div>

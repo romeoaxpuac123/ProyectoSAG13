@@ -1,24 +1,27 @@
-<p><app-nav-bar-proveedor></app-nav-bar-proveedor>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
- 
-    <div [innerHtml]="acumulador"></div>
-    <div class="container" style="padding-bottom: 100px;">
-       
-        
-              
-        
+<app-nav-bar-proveedor></app-nav-bar-proveedor>
+    
+<div class="container">
+    <div class="row row-cols-5" >
+        <div *ngFor="let vec of vector_aux;" class="col"  style=" padding:20px; ">
+            <div class="card" >
+                <img class="card-img-top" src={{vec[6]}} width="auto" height="220px" alt="">
+            <div class="card-body">
+            <p class="card-text">{{vec[0]}}</p>
+            <p class="card-text">{{"Stock "+vec[9]}}</p>
+            <p class="card-text">{{"Venta: Q."+vec[1]}}</p>
+            <p *ngIf="vec[3]==1" class="card-text">{{"Final: Q."+vec[7]}}</p>
+            <p *ngIf="vec[3]==2" class="card-text">{{"Subasta: Q."+vec[8]}}</p>
+            <button *ngIf="vec[3]==2" button type="button" class="btn btn-success" (click)='cerrar_subasta(vec[0],vec[4],vec[9],vec[8])'>Cerrar subasta</button>
+            <br>
+            </div>
+            </div>
 
-
-                    
+        </div>
     </div>
+</div>
 
 
 
 
-
-
-      
-    <app-pie-pagina></app-pie-pagina>
+<app-pie-pagina></app-pie-pagina>
     

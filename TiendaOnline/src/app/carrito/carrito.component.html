@@ -1,0 +1,38 @@
+<app-nav-bar-cliente></app-nav-bar-cliente>
+
+
+  <div class="container">
+        <br>
+        <br>
+        <h2 align="center">Carrito de compras</h2>
+        <br>
+        <div style="padding: 20;" align="center">
+        <button type="button" class="btn btn-success" (click)="verificar_stock();">Finalizar compra</button>
+        </div>
+        <br>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                
+                <th>Nombre</th>
+                <th>Cantidad</th>
+                <th>subtotal</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let vec of vector_aux;">
+                <td>{{vec[2]}}</td>
+                <td>{{vec[5]}}</td>
+                <td>{{"Q. "+vec[6]}}</td>
+                <td><button type="button" class="btn btn-danger" (click)='eliminar(vec[0]);' >Quitar</button></td>    
+              </tr>
+              
+            </tbody>
+          </table>
+        <br>
+        <br>
+</div>
+
+
+<app-pie-pagina></app-pie-pagina>

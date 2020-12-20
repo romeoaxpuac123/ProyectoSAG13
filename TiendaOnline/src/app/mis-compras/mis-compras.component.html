@@ -1,0 +1,42 @@
+<app-nav-bar-cliente></app-nav-bar-cliente>
+
+
+  <div class="container">
+        <br>
+        <br>
+        <h2 align="center">Mis compras</h2>
+        <br>
+        <br>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                
+                <th>Código de venta</th>
+                <th>Código de factura</th>
+                <th>código de producto</th>
+                <th>código de producto cliente</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let vec of vector_aux;">
+              
+                <td>{{vec[0]}}</td>
+                <td>{{vec[1]}}</td>
+                <td>{{vec[2]}}</td>
+                <td>{{vec[3]}}</td>
+                <td>{{vec[4]}}</td>
+                <td>{{"Q."+vec[5]}}</td>
+                
+                    
+              </tr>
+              
+            </tbody>
+          </table>
+        <br>
+        <br>
+</div>
+
+
+<app-pie-pagina></app-pie-pagina>

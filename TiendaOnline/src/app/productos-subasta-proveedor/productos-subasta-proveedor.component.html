@@ -1,0 +1,20 @@
+<app-nav-bar-proveedor></app-nav-bar-proveedor>
+<div class="container">
+    <div class="row row-cols-5" >
+        <div *ngFor="let vec of vector_aux;" class="col"  style=" padding:20px; ">
+            <div *ngIf="vec[3]==2" class="card" >
+                <img class="card-img-top" src={{vec[6]}} width="auto" height="220px" alt="">
+            <div class="card-body">
+            <p class="card-text">{{vec[0]}}</p>
+            <p class="card-text">{{"Stock "+vec[9]}}</p>
+            <p class="card-text">{{"Venta: Q."+vec[1]}}</p>
+            <p *ngIf="vec[3]==1" class="card-text">{{"Final: Q."+vec[7]}}</p>
+            <p *ngIf="vec[3]==2" class="card-text">{{"Subasta: Q."+vec[8]}}</p>
+            <br>
+            </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<app-pie-pagina></app-pie-pagina>

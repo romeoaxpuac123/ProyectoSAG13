@@ -1,0 +1,36 @@
+<app-nav-bar-cliente></app-nav-bar-cliente>
+
+
+<div class='container' style="padding-bottom:20px; ">
+  <form>
+      <br>
+      <div align="center">
+        <h3>Pagar factura</h3>
+      </div>
+      <br>
+    <div class="form-group"  >
+      <div class="form-group">
+        <label for="cars">Elija su tarjeta: </label>
+
+        <select name="tarjetas" id="tarjetas">
+          <option   *ngFor="let vec of vector_aux;" value="{{vec}}" >{{vec}}</option>
+          
+        </select> 
+        </div>  
+
+        <div class="form-group">
+          <button type="button" class="btn btn-success" (click)='pagar_factura();' >Siguiente paso</button>
+          </div>
+        </div>
+  </form>
+</div>
+
+
+
+
+
+
+ 
+
+
+<app-pie-pagina></app-pie-pagina>
