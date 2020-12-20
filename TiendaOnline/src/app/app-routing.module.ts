@@ -28,6 +28,9 @@ import { DatosFacturaComponent } from './datos-factura/datos-factura.component';
 import { PagarFacturaComponent } from './pagar-factura/pagar-factura.component';
 import { MisFacturasComponent } from './mis-facturas/mis-facturas.component';
 import { MisComprasComponent } from './mis-compras/mis-compras.component';
+import { ProductosSubastaClienteComponent } from './productos-subasta-cliente/productos-subasta-cliente.component';
+import { ProductosSubastaProveedorComponent } from './productos-subasta-proveedor/productos-subasta-proveedor.component';
+import { OfertasClienteComponent } from './ofertas-cliente/ofertas-cliente.component'
 const routes: Routes = [ 
   {path:'',redirectTo:'/welcome',pathMatch:'full'},
   { path: 'welcome', component: PantallaInicialComponent },
@@ -57,7 +60,10 @@ const routes: Routes = [
   { path: 'datos-factura', component: DatosFacturaComponent},
   { path: 'pagar-factura', component: PagarFacturaComponent},
   { path: 'mis-facturas', component: MisFacturasComponent},
-  { path: 'mis-compras', component: MisComprasComponent}
+  { path: 'mis-compras', component: MisComprasComponent},
+  { path: 'productos-subasta-cliente', component: ProductosSubastaClienteComponent},
+  { path: 'productos-subasta-proveedor', component: ProductosSubastaProveedorComponent},
+  { path: 'ofertas-cliente', component: OfertasClienteComponent}
 ];
 
 @NgModule({

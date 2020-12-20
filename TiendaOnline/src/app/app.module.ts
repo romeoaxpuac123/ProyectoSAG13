@@ -36,6 +36,9 @@ import { DatosFacturaComponent } from './datos-factura/datos-factura.component';
 import { PagarFacturaComponent } from './pagar-factura/pagar-factura.component';
 import { MisFacturasComponent } from './mis-facturas/mis-facturas.component';
 import { MisComprasComponent } from './mis-compras/mis-compras.component';
+import { ProductosSubastaClienteComponent } from './productos-subasta-cliente/productos-subasta-cliente.component';
+import { ProductosSubastaProveedorComponent } from './productos-subasta-proveedor/productos-subasta-proveedor.component';
+import { OfertasClienteComponent } from './ofertas-cliente/ofertas-cliente.component';
 
 
 
@@ -72,7 +75,10 @@ import { MisComprasComponent } from './mis-compras/mis-compras.component';
     DatosFacturaComponent,
     PagarFacturaComponent,
     MisFacturasComponent,
-    MisComprasComponent
+    MisComprasComponent,
+    ProductosSubastaClienteComponent,
+    ProductosSubastaProveedorComponent,
+    OfertasClienteComponent
   ],
   imports: [
     BrowserModule,

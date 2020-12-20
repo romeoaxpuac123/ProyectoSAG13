@@ -15,11 +15,11 @@ export class ClienteAgregarProductoComponent implements OnInit {
   listainfo:any=[];
 
   nombre:string="";
-  precio_venta:string="";
+  precio_venta:string="0";
   stock:string="";
   categoria:string="";
   imagen:string="";
-  precio_subaste:string="";
+  precio_subaste:string="0";
   estado:string="";
   vender:boolean=false;
   subastar:boolean=false;

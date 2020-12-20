@@ -1,0 +1,23 @@
+<app-nav-bar-cliente></app-nav-bar-cliente>
+
+
+  <div class="container">
+    <div class="row row-cols-5" >
+        <div *ngFor="let vec of vector_aux;" class="col"  style=" padding:20px; ">
+            <div class="card" >
+                <img class="card-img-top" src={{vec[2]}} width="auto" height="220px" alt="">
+            <div class="card-body">
+            
+            <p class="card-text">{{"Código producto: "+vec[0]}}</p>
+            <p class="card-text">{{"Precio Ofertado: Q."+vec[1]}}</p>
+            
+            <br>
+            </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<app-pie-pagina></app-pie-pagina>

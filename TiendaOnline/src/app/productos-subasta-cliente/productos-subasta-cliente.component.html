@@ -1,0 +1,31 @@
+<app-nav-bar-cliente></app-nav-bar-cliente>
+
+
+  <div class="container">
+    <div class="row row-cols-5" >
+        <div *ngFor="let vec of vector_aux;" class="col"  style=" padding:20px; ">
+            <div  *ngIf="vec[9]==2" class="card" >
+                <img class="card-img-top" src={{vec[5]}} width="auto" height="220px" alt="">
+            <div class="card-body">
+            <p class="card-text">{{vec[1]}}</p>
+            <p class="card-text">{{"Código: "+vec[0]}}</p>
+            <p class="card-text">{{"Venta: Q."+vec[2]}}</p>
+            <p class="card-text">{{"Final: Q."+vec[6]}}</p>
+            <p class="card-text">{{"Stock: "+vec[3]}}</p>
+            <p class="card-text">{{"Categoria: "+vec[4]}}</p>
+            <p *ngIf="vec[9]==2" class="card-text">Estado: En subasta</p>
+            <p *ngIf="vec[9]==2" class="card-text">{{"Subasta: Q."+vec[8]}}</p>
+            <p *ngIf="vec[9]==1" class="card-text">Estado: En venta</p>
+            <p *ngIf="vec[9]==3" class="card-text">Estado: En venta y subasta</p>
+            <p *ngIf="vec[9]==3" class="card-text">{{"Subasta: Q."+vec[8]}}</p>
+            
+            <br>
+            </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<app-pie-pagina></app-pie-pagina>
