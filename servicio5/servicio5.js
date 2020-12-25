@@ -232,11 +232,11 @@ app.post('/Ventas',(req,res)=>{
 	if(id,numero_factura){
 		let pool  = mysql.createPool({
 			connectionLimit : 10,
-			 host : '172.18.0.2',
-				database : 'ProyectoSA',
-				user : 'root',
-				password : 'grupo13',
-				port: 3306
+			host : '172.18.0.2',
+			database : 'ProyectoSA',
+			user : 'root',
+			password : 'grupo13',
+			port: 3306
 		  });
 		  let var1 = 0;
 		  let productoFaltante = "";
@@ -249,12 +249,68 @@ app.post('/Ventas',(req,res)=>{
 					let carritoxd = rows[i];
 					if(carritoxd.id_Producto_Cliente == null){
 						conexion.query("UPDATE Producto SET stock = (stock - ?) WHERE id_Producto = ?", [parseFloat(carritoxd.cantidad),parseInt(carritoxd.id_Producto,10)], function(error, result, fields) {
-					
+							conexion.query("SELECT P.stock, P.Nombre, S.empresa, S.email FROM Producto P, Proveedor S WHERE P.id_Producto = ? AND S.id_provedor = P.id_provedor ", [parseInt(carritoxd.id_Producto,10)], function(error, result2, fields) {
+								if (result2.length > 0) {
+									console.log(result2);
+									var traspoter = nodemailer.createTransport({ 
+										service: 'gmail',
+										auth: {
+											user: 'proyectosag13@gmail.com',
+											pass: '123cuaderno' // naturally, replace both with your real credentials or an application-specific password
+										}
+									});
+								
+									var mailOption = {
+										from: "Remitente",
+										to: result2[0].email,
+										subject: "Stock Productos",
+										text: "Hola " + result2[0].empresa + " Se ha comprado: " + result2[0].Nombre +  " Quedan disponibles " + result2[0].stock
+									};
+								
+									traspoter.sendMail(mailOption,(error,info)=>{
+										if(error){
+											res.status(500).send(error.message);
+										}
+										else{
+											console.log("Email enviado");
+											//res.status(200).jsonp(req.body);
+										}
+									});	
+								}
+							});
 						});						
 					}
 					else if(carritoxd.id_Producto == null){
 						conexion.query("UPDATE Producto_Cliente SET stock = (stock - ?) WHERE id_Producto_Cliente = ?", [parseFloat(carritoxd.cantidad),parseInt(carritoxd.id_Producto_Cliente,10)], function(error, result, fields) {
-					
+							conexion.query("SELECT P.stock, S.Nombre, S.email, P.id_Producto_Cliente FROM Producto_Cliente P, Cliente S WHERE P.id_Producto_Cliente = ? AND S.id_cliente = P.id_cliente ", [parseInt(carritoxd.id_Producto_Cliente,10)], function(error, result2, fields) {
+								if (result2.length > 0) {
+									console.log(result2);
+									var traspoter = nodemailer.createTransport({ 
+										service: 'gmail',
+										auth: {
+											user: 'proyectosag13@gmail.com',
+											pass: '123cuaderno' // naturally, replace both with your real credentials or an application-specific password
+										}
+									});
+								
+									var mailOption = {
+										from: "Remitente",
+										to: result2[0].email,
+										subject: "Stock Productos",
+										text: "Hola " + result2[0].Nombre + " Se ha comprado (Codigo Producto): " + result2[0].id_Producto_Cliente +  " Quedan disponibles " + result2[0].stock
+									};
+								
+									traspoter.sendMail(mailOption,(error,info)=>{
+										if(error){
+											res.status(500).send(error.message);
+										}
+										else{
+											console.log("Email enviado");
+											//res.status(200).jsonp(req.body);
+										}
+									});	
+								}
+							});
 						});	
 					}
 				}
@@ -293,18 +349,17 @@ app.post('/Ventas',(req,res)=>{
 				var mailOption = {
 					from: "Remitente",
 					to: rows2[0].email,
-					subject: "Muchas Gracias",
+					subject: "Prueba",
 					text: "Gracias por tu compra :D tu factura No. " + numero_factura + " con un total de Q. " + rows[0].total + " ha sido registrada"
 				};
 			
 				traspoter.sendMail(mailOption,(error,info)=>{
 					if(error){
-						console.log(error);
-						res.json({"msg":false,"tipo":"error","user":0,"name":error});
+						res.status(500).send(error.message);
 					}
 					else{
 						console.log("Email enviado");
-						res.json({"msg":true,"user":id,"name":"TTDD"});
+						res.status(200).jsonp(req.body);
 					}
 				});		
 			});	
@@ -368,14 +423,13 @@ app.post('/Ventas',(req,res)=>{
 			});	
 		});
 		
-		
+		res.json({"msg":true,"user":id,"name":"TTDD"});
 
 		
 	}else{
 		res.json({"msg":false,"tipo":"error","user":0,"name":"error"});
 	}
 });
-
 
 app.listen(app.get('port'),()=>{
 	console.log('Server on port 7003');
