@@ -224,6 +224,50 @@ app.post('/MisApuestas',(req,res)=>{
 	}
 });
 
+
+
+
+app.post('/MisVentasCliente',(req,res)=>{
+	const { id } = req.body;
+	if(id){
+		console.log("Se muestran ->" + id);		
+		conexion.query('SELECT * FROM Venta V WHERE id_Producto_Cliente = (SELECT  id_Producto_Cliente FROM Producto_Cliente P WHERE  P.id_cliente = ? AND V.id_Producto_Cliente = P.id_Producto_Cliente);', [parseInt(id,10)], function(error, result, fields) {
+			if (result.length > 0) {
+				console.log("msg//////////////////////////// entro");
+				elnuevouser =  parseInt(id,10);
+				console.log(result)
+				res.json({result});
+				//res.json({"msg":true,"user":0,"name":"error"});
+			} else {
+				res.json({"msg":false,"user":0,"name":"error"});
+				
+			}			
+		});
+	}else{
+		res.json({"msg":false,"tipo":"error","user":0,"name":"error"});
+	}
+});
+
+app.post('/MisVentasProveedor',(req,res)=>{
+	const { id } = req.body;
+	if(id){
+		console.log("Se muestran ->" + id);		
+		conexion.query('SELECT * FROM Venta V WHERE id_Producto = (SELECT  id_Producto FROM Producto P WHERE  P.id_provedor = ? AND V.id_Producto = P.id_Producto);', [parseInt(id,10)], function(error, result, fields) {
+			if (result.length > 0) {
+				console.log("msg//////////////////////////// entro");
+				elnuevouser =  parseInt(id,10);
+				console.log(result)
+				res.json({result});
+				//res.json({"msg":true,"user":0,"name":"error"});
+			} else {
+				res.json({"msg":false,"user":0,"name":"error"});
+				
+			}			
+		});
+	}else{
+		res.json({"msg":false,"tipo":"error","user":0,"name":"error"});
+	}
+});
 app.listen(app.get('port'),()=>{
 	console.log('Server on port 8003');
 });
