@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS Proveedor
     password varchar(15),
     direccion varchar(155)
 );
-INSERT INTO Proveedor (empresa,email,password,direccion)VALUES ('DOCH','proveedor@doch.com','1234','Guatemala City');
+INSERT INTO Proveedor (empresa,email,password,direccion)VALUES ('DOCH','soyromeoaxpuac@gmail.com','1234','Guatemala City');
 
 CREATE TABLE IF NOT EXISTS Cliente
 (
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS Cliente
     fotografia varchar(155),
     primary key(id_cliente)
 );
-INSERT INTO Cliente (Nombre,Apellido,password,email,celular,fotografia)VALUES ('Romeo','Axpuac','1234','romeo@gmail.com','12345','Foto1');
+INSERT INTO Cliente (Nombre,Apellido,password,email,celular,fotografia)VALUES ('Romeo','Axpuac','1234','soyromeoaxpuac@gmail.com','12345','Foto1');
 
 CREATE TABLE IF NOT EXISTS Tarjeta
 (
@@ -91,6 +91,8 @@ CREATE TABLE IF NOT EXISTS Factura
     total double,
     NIT varchar(55),
     Direccion_De_Envio varchar(155),
+    EstadoFinal varchar(155),
+    EstadoActual varchar(155) unsigned default 'COMPRADO',
     FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente)
 );
 
