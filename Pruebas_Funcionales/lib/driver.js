@@ -23,7 +23,7 @@ describe('Pruebas Funcionales: ', () => {
     it('Login', (done) => {
         chai.request(url)
             .post('authCliente')
-            .send({ email: "romeo@gmail.com",pass: "1234" })
+            .send({ email: "soyromeoaxpuac@gmail.com",pass: "1234" })
             .end(function (err, res) {
                 expect(res).to.have.status(200);
                 done();
