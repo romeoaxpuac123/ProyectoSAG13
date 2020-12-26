@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS Factura
     NIT varchar(55),
     Direccion_De_Envio varchar(155),
     EstadoFinal varchar(155),
-    EstadoActual varchar(155) unsigned default 'COMPRADO',
+    EstadoActual varchar(155) default 'COMPRADO',
     FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente)
 );
 
