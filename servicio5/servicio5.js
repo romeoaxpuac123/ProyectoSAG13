@@ -194,8 +194,8 @@ app.post('/Stock',(req,res)=>{
 });
 
 app.post('/Factura',(req,res)=>{
-	const { id,direccion,nit } = req.body;
-	if(id,direccion,nit){
+	const { id,direccion,nit,EstadoFinal } = req.body;
+	if(id,direccion,nit,EstadoFinal){
 		let pool  = mysql.createPool({
 			connectionLimit : 10,
 			 host : '172.18.0.2',
@@ -214,11 +214,11 @@ app.post('/Factura',(req,res)=>{
 				totalAPagar = totalAPagar + parseFloat(carritoxd.subtotal)
 			}
 			
-			pool.query('INSERT INTO Factura (id_cliente,fecha,total,NIT,Direccion_De_Envio) VALUES (?,NOW(),?,?,?);',[ [parseInt(id,10)],totalAPagar,nit,direccion], function(err, rows, fields) {
+			pool.query('INSERT INTO Factura (id_cliente,fecha,total,NIT,Direccion_De_Envio,EstadoFinal) VALUES (?,NOW(),?,?,?,?);',[ [parseInt(id,10)],totalAPagar,nit,direccion,EstadoFinal], function(err, rows, fields) {
 				pool.query('SELECT * FROM Factura WHERE id_cliente = ?;',[parseInt(id,10)], function(err, rows, fields) {
 					res.json({"msg":true,"user":id,"name":rows[rows.length-1].id_factura});
 				});
-			});				
+			});			
 		});
 		
 	}else{
