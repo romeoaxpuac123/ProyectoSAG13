@@ -78,6 +78,55 @@ app.post('/TodasLasCompras',(req,res)=>{
 	}
 });
 
+app.post('/ModificarEstado',(req,res)=>{
+	const { id,estado } = req.body;
+	if(id,estado){
+		console.log("Se muestran ->" + id);		
+		conexion.query("UPDATE Factura SET EstadoActual =  ? WHERE id_factura = ?", [estado,parseInt(id,10)], function(error, result, fields) {
+			if(estado =="EN_TIENDA"){
+				conexion.query("SELECT S.Nombre, S.email, F.id_factura FROM Factura F, Cliente S WHERE F.id_factura = ? AND S.id_cliente = F.id_cliente AND F.EstadoFinal = ? ", [parseInt(id,10),"TIENDA"], function(error, result2, fields) {
+					if (result2.length > 0) {
+						console.log(result2);
+						
+						var traspoter = nodemailer.createTransport({ 
+							service: 'gmail',
+										auth: {
+											user: 'proyectosag13@gmail.com',
+											pass: '123cuaderno' // naturally, replace both with your real credentials or an application-specific password
+										}
+						});
+					
+						var mailOption = {
+							from: "Remitente",
+							to: result2[0].email,
+							subject: "Producto en tienda",
+							text: "Hola " + result2[0].Nombre + " Tu Orden: " + result2[0].id_factura +  " esta en tienda, puedes venir por el, Gracias" 
+						};
+					
+						traspoter.sendMail(mailOption,(error,info)=>{
+							if(error){
+								res.status(500).send(error.message);
+							}
+							else{
+								console.log("Email enviado");
+								res.status(200).jsonp(req.body);
+								res.json({"msg":true});
+								
+							}
+						});	
+
+						
+						
+					}
+				});
+				res.json({"msg":true});
+			}
+		});
+	}else{
+		res.json({"msg":false,"tipo":"error","user":0,"name":"error"});
+	}
+});
+
 
 
 app.listen(app.get('port'),()=>{
