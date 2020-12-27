@@ -6,11 +6,11 @@ var path = require('path');
 var nodemailer = require('nodemailer');
 //host : '172.18.0.2',
 var conexion= mysql.createConnection({
-    host : 'localhost',
+    host : '172.18.0.2',
     database : 'ProyectoSA',
     user : 'root',
     password : 'grupo13',
-    port: 33060
+    port: 3306
 });
 
 conexion.connect(function(err) {
