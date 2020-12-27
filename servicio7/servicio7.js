@@ -59,7 +59,24 @@ app.post('/MiPedido',(req,res)=>{
 });
 
 
-
+app.post('/TodasLasCompras',(req,res)=>{
+	const { id } = req.body;
+	if(id){
+		console.log("Se muestran ->" + id);		
+		conexion.query('Select F.id_factura AS Orden,C.Nombre AS Cliente,F.NIT,F.total,F.EstadoActual from Factura F, Cliente C WHERE C.id_cliente = F.id_cliente', function(error, result, fields) {
+			if (result.length > 0) {
+				console.log("msg//////////////////////////// entro");
+				console.log(result)
+				res.json({result});
+			} else {
+				res.json({"msg":false,"user":0,"name":"error"});
+				
+			}			
+		});
+	}else{
+		res.json({"msg":false,"tipo":"error","user":0,"name":"error"});
+	}
+});
 
 
 
