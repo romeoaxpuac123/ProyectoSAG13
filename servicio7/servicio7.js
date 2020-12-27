@@ -119,8 +119,11 @@ app.post('/ModificarEstado',(req,res)=>{
 						
 					}
 				});
+				
+			}else{
 				res.json({"msg":true});
 			}
+			
 		});
 	}else{
 		res.json({"msg":false,"tipo":"error","user":0,"name":"error"});
