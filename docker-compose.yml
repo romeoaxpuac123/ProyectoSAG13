@@ -84,6 +84,18 @@ services:
       - '9003:9003'
     depends_on:
       - mysql-bd
+  servicio8:
+    container_name: servicio8
+    image: servicio8
+    build: 
+      dockerfile: Dockerfile 
+      context: ./servicio8
+    environment: 
+      - HOST=mysql-bd      
+    ports:
+      - '9009:9009'
+    depends_on:
+      - mysql-bd
   mysql-bd:
     container_name: mysql-bd
     image: mysql-bd
