@@ -22,4 +22,9 @@ export class PantallaInicialComponent implements OnInit {
 
   }
 
+  gotologinadmin(){
+    this.router.navigate(['/loginadmin']);
+
+  }
+
 }

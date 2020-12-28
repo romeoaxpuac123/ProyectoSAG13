@@ -39,6 +39,9 @@ import { MisComprasComponent } from './mis-compras/mis-compras.component';
 import { ProductosSubastaClienteComponent } from './productos-subasta-cliente/productos-subasta-cliente.component';
 import { ProductosSubastaProveedorComponent } from './productos-subasta-proveedor/productos-subasta-proveedor.component';
 import { OfertasClienteComponent } from './ofertas-cliente/ofertas-cliente.component';
+import { PantallaAdminComponent } from './pantalla-admin/pantalla-admin.component';
+import { LoginadminComponent } from './loginadmin/loginadmin.component';
+import { NavBarAdminComponent } from './nav-bar-admin/nav-bar-admin.component';
 
 
 
@@ -78,7 +81,10 @@ import { OfertasClienteComponent } from './ofertas-cliente/ofertas-cliente.compo
     MisComprasComponent,
     ProductosSubastaClienteComponent,
     ProductosSubastaProveedorComponent,
-    OfertasClienteComponent
+    OfertasClienteComponent,
+    PantallaAdminComponent,
+    LoginadminComponent,
+    NavBarAdminComponent
   ],
   imports: [
     BrowserModule,
