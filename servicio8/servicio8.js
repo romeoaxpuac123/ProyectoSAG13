@@ -250,6 +250,159 @@ app.post('/login-proveedor',(req,res)=>{
 	}
 });
 
+app.post('/crear-producto-cliente',(req,res)=>{
+    const { id_cliente,nombre,descripcion,stock,precio_venta,foto,fecha_subasta,precio_inicial_subasta,precio_compralo_ahora } = req.body;
+    var precio_final = parseFloat(precio_venta)+((parseFloat(precio_venta)*10)/100);
+	if(id_cliente && nombre && descripcion && stock && precio_venta && foto){
+		console.log("Se inserta->" + nombre);		
+		conexion.query('INSERT INTO Producto_Cliente (Nombre,Precio_Venta,stock,categoria,imagen,precio_final,id_cliente,estado) VALUES (?,?,?,?,?,?,?,?)',
+																[nombre, parseFloat(precio_venta),parseInt(stock,10), "Fase 3",foto,parseFloat(precio_final), parseInt(id_cliente,10),parseInt("1",10)]);
+				console.log("msg////////////////////////////");
+				let elnuevouser = 0;
+				conexion.query('SELECT * FROM Producto_Cliente WHERE Nombre = ? AND id_cliente = ?', [nombre,parseInt(id_cliente,10)], function(error, result, fields) {
+					const myString = JSON.stringify(result);
+					console.log("hola-<" + myString)
+					var resultados = myString.split(',');
+					elnuevouser =  parseInt(resultados[0].split(':')[1]);
+					var Nombrex = resultados[1].split(':')[1].replace('\"','').replace('\"','');
+					var Precio_Venta = resultados[2].split(':')[1].replace('\"','').replace('\"','');
+					var stock = resultados[3].split(':')[1].replace('\"','').replace('\"','');
+					var categoria = resultados[4].split(':')[1].replace('\"','').replace('\"','');
+					var  imagen = resultados[5].split('\"imagen\":')[1].replace('\"','').replace('\"','');
+					var precio_final = resultados[6].split(':')[1].replace('\"','').replace('\"','');
+					var id_cliente = resultados[7].split(':')[1].replace('\"','').replace('\"','');
+					res.status(200)
+					res.json({
+						"status": "success",
+					
+						"data": {
+							"id_producto": elnuevouser,
+							"nombre": Nombrex,
+							"descripcion": Nombrex,
+							"stock": stock,
+							"precio_venta": precio_final,
+							"foto": imagen,
+							"fecha_subasta": null,
+							"precio_inicial_subasta": null,
+							"precio_compralo_ahora": null
+						},
+					 
+						"message": "Producto creado de manera exitosa."
+					});
+				});
+			
+	}else{
+		res.status(400)
+		res.json({
+			"status": "fail",
+			"message": "No se encontró el campo obligatorio."
+		});
+	}
+});
+
+app.post('/crear-producto-proveedor',(req,res)=>{
+    const { id_proveedor,nombre,descripcion,stock,precio_venta,foto,fecha_subasta,precio_inicial_subasta,precio_compralo_ahora } = req.body;
+    var precio_final = parseFloat(precio_venta)+((parseFloat(precio_venta)*10)/100);
+	if(id_proveedor && nombre && descripcion && stock && precio_venta && foto){
+		console.log("Se inserta->" + nombre);		
+		conexion.query('INSERT INTO Producto (Nombre,Precio_Venta,stock,categoria,imagen,precio_final,id_provedor,estado) VALUES (?,?,?,?,?,?,?,?)',
+																[nombre, parseFloat(precio_venta),parseInt(stock,10), "Fase 3",foto,parseFloat(precio_final), parseInt(id_proveedor,10),parseInt("1",10)]);
+				console.log("msg////////////////////////////");
+				let elnuevouser = 0;
+				conexion.query('SELECT * FROM Producto WHERE Nombre = ? AND id_provedor = ?', [nombre,parseInt(id_proveedor,10)], function(error, result, fields) {
+					const myString = JSON.stringify(result);
+					var resultados = myString.split(',');
+					elnuevouser =  parseInt(resultados[0].split(':')[1]);
+					var Nombrex = resultados[1].split(':')[1].replace('\"','').replace('\"','');
+					var Precio_Venta = resultados[2].split(':')[1].replace('\"','').replace('\"','');
+					var stock = resultados[3].split(':')[1].replace('\"','').replace('\"','');
+					var categoria = resultados[4].split(':')[1].replace('\"','').replace('\"','');
+					var  imagen = resultados[5].split('\"imagen\":')[1].replace('\"','').replace('\"','');
+					var precio_final = resultados[6].split(':')[1].replace('\"','').replace('\"','');
+					var id_cliente = resultados[7].split(':')[1].replace('\"','').replace('\"','');
+					res.status(200)
+					res.json({
+						"status": "success",
+					
+						"data": {
+							"id_producto": elnuevouser,
+							"nombre": Nombrex,
+							"descripcion": Nombrex,
+							"stock": stock,
+							"precio_venta": precio_final,
+							"foto": imagen,
+							"fecha_subasta": null,
+							"precio_inicial_subasta": null,
+							"precio_compralo_ahora": null
+						},
+					 
+						"message": "Producto creado de manera exitosa."
+					});
+				});
+			
+	}else{
+		res.status(400)
+		res.json({
+			"status": "fail",
+			"message": "No se encontró el campo obligatorio."
+		});
+	}
+});
+
+
+app.get('/ver-productos', function(req, res) {
+	
+	if(req.query.id_producto){
+		console.log("hola")
+		if(parseInt(req.query.id_producto,10)>=2000){
+			conexion.query('SELECT id_Producto_Cliente AS id_producto,Nombre AS nombre, Nombre AS descripcion,stock,precio_final AS precio_venta, imagen AS foto, fecha_subasta AS fecha_subasta,precio_subaste AS precio_inicial_subasta,precio_subaste AS precio_compralo_ahora FROM Producto_Cliente WHERE id_Producto_Cliente = ?;',[parseInt(req.query.id_producto,10)], function(error, data, fields) {
+				if(data.length>0){
+					res.status(200)
+					res.json({"status": "success",data});
+				}else{
+					res.status(400)
+					res.json({
+						"status": "fail",
+						"message": "No existe producto."
+					});
+				}
+			
+			});
+		}else{
+						
+			conexion.query('SELECT id_Producto AS id_producto,Nombre AS nombre, Nombre AS descripcion,stock,precio_final AS precio_venta, imagen AS foto, fecha_subasta AS fecha_subasta,precio_subaste AS precio_inicial_subasta,precio_subaste AS precio_compralo_ahora FROM Producto WHERE id_Producto = ?;',[parseInt(req.query.id_producto,10)], function(error, data, fields) {
+				if(data.length>0){
+					res.status(200)
+					res.json({"status": "success",data});
+				}else{
+					res.status(400)
+					res.json({
+						"status": "fail",
+						"message": "No existe producto."
+					});
+				}
+				
+			});
+		}
+	}else{
+		conexion.query('SELECT id_Producto_Cliente AS id_producto,Nombre AS nombre, Nombre AS descripcion,stock,precio_final AS precio_venta, imagen AS foto, fecha_subasta AS fecha_subasta,precio_subaste AS precio_inicial_subasta,precio_subaste AS precio_compralo_ahora FROM Producto_Cliente;', function(error, result, fields) {
+			
+			conexion.query('SELECT id_Producto AS id_producto,Nombre AS nombre, Nombre AS descripcion,stock,precio_final AS precio_venta, imagen AS foto, fecha_subasta AS fecha_subasta,precio_subaste AS precio_inicial_subasta,precio_subaste AS precio_compralo_ahora FROM Producto;', function(error, result2, fields) {
+				//Resultado = result + result2;
+				console.log(result.length + "--" + result2.length);
+				let data = Object.assign(result);
+				data = data.concat(result2);
+				res.status(200)			
+				res.json({"status": "success",data});
+				
+			});
+		});
+	}
+	
+
+	//res.json({"msg":false,"tipo":"error","user":0,"name":"error"});
+});
+
 
 
 app.listen(app.get('port'),()=>{

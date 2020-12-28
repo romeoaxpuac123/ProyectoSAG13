@@ -45,6 +45,7 @@ CREATE TABLE IF NOT EXISTS Producto
     id_provedor int,
     precio_subaste double unsigned default 0.00,
     estado int unsigned default 1,
+	fecha_subasta date,
     FOREIGN KEY (id_provedor) REFERENCES Proveedor(id_provedor)
 
 );
@@ -63,6 +64,7 @@ CREATE TABLE IF NOT EXISTS Producto_Cliente
     id_cliente int,
     precio_subaste double unsigned default 0.00,
     estado int unsigned default 1,
+	fecha_subasta date,
     FOREIGN KEY (id_cliente) REFERENCES Cliente(id_cliente)
 
 );
