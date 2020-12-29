@@ -1,2 +1,54 @@
 <app-nav-bar-admin></app-nav-bar-admin>
+
+
+  <div class="container">
+        <br>
+        <br>
+        <h2 align="center">Dashboard de compras</h2>
+        <br>
+        <br>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                
+                <th>Orden</th>
+                <th>Cliente</th>
+                <th>NIT</th>
+                <th>Total</th>
+                <th>Estado Actual</th>
+                <th>Editar estado</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let vec of vector_aux;">
+              
+                <td>{{vec[0]}}</td>
+                <td>{{vec[1]}}</td>
+                <td>{{vec[2]}}</td>
+                <td>{{vec[3]}}</td>
+                <td>{{vec[4]}}</td>
+                <td>
+
+                  <select name="Opciones">
+                    <option></option>
+                    <option (click)='seleccionar_estado(vec[0],"COMPRADO");' >Comprado</option>
+                    <option (click)='seleccionar_estado(vec[0],"DESPACHADO");' >Despachado</option>
+                    <option (click)='seleccionar_estado(vec[0],"EN_TIENDA");' >En tienda</option>
+                    <option (click)='seleccionar_estado(vec[0],"ENTREGADO");' >Entregado</option>
+                    
+                  </select> 
+                  
+                </td>
+                
+                    
+              </tr>
+              
+            </tbody>
+          </table>
+        <br>
+        <br>
+</div>
+
+
 <app-pie-pagina></app-pie-pagina>

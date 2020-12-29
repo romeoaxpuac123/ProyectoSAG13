@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./loginadmin.component.css']
 })
 export class LoginadminComponent implements OnInit {
-  user:string="";
+  user:string="admin@econoahorro.com";
   pass:string="";
 
   placeholders = {
