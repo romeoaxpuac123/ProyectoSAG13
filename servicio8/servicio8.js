@@ -402,7 +402,174 @@ app.get('/ver-productos', function(req, res) {
 
 	//res.json({"msg":false,"tipo":"error","user":0,"name":"error"});
 });
+app.post('/realizar-compra',(req,res)=>{
+    const { id_cliente,productos } = req.body;
+	if(id_cliente && productos){
+		console.log("Cliente->" + id_cliente);
+		let totalAPagar = 0.0;
+		for(let i = 0; i < productos.length;i++){
+			console.log("Producto->" + productos[i].id_producto + " Cantidad->" + productos[i].cantidad);
+			if(parseInt(productos[i].id_producto,10)>=2000){
+				
+				conexion.query('SELECT * FROM Producto_Cliente WHERE  id_Producto_Cliente = ?', [parseInt(productos[i].id_producto,10)], function(error, result, fields) {
+					totalAPagar = totalAPagar + (parseFloat(result[0].precio_final) * parseFloat(productos[i].cantidad));
+					if(i == productos.length -1){
+						console.log("--" + totalAPagar);
+						conexion.query('INSERT INTO Factura (id_cliente,fecha,total,NIT,Direccion_De_Envio,EstadoFinal) VALUES (?,NOW(),?,?,?,?);',[ [parseInt(id_cliente,10)],totalAPagar,"CF","Guatemala","EN_TIENDA"], function(err, rows, fields) {
+							
+							conexion.query('SELECT * FROM Factura WHERE id_cliente = ?;',[parseInt(id_cliente,10)], function(err, rows, fields) {
+								for(let ixx = 0; ixx < productos.length;ixx++){
+									if(parseInt(productos[ixx].id_producto,10)>=2000){
+										conexion.query('SELECT * FROM Producto_Cliente WHERE  id_Producto_Cliente = ?', [parseInt(productos[ixx].id_producto,10)], function(error, resultxd, fields) {
+											console.log("que pedo")
+											let subtotalAPagar2 = (parseFloat(resultxd[0].precio_final) * parseFloat(productos[ixx].cantidad));
+											conexion.query('INSERT INTO Venta (id_factura,id_Producto_Cliente,id_cliente,cantidad,subtotal) VALUES (?,?,?,?,?);',[ [parseInt(rows[rows.length-1].id_factura,10)],[parseInt(productos[ixx].id_producto,10)],[parseInt(id_cliente,10)],[parseInt(productos[ixx].cantidad,10)],subtotalAPagar2], function(err, rows, fields) {
+												//res.json({"msg":true,"user":id_cliente,"name":rows[rows.length-1].id_factura});
+												//res.json({"msg":true});
+											});
+										});
+									}else{
+										conexion.query('SELECT * FROM Producto WHERE  id_Producto = ?', [parseInt(productos[ixx].id_producto,10)], function(error, resultxd, fields) {
+											console.log("que pedo")
+											let subtotalAPagar2 = (parseFloat(resultxd[0].precio_final) * parseFloat(productos[ixx].cantidad));
+											conexion.query('INSERT INTO Venta (id_factura,id_Producto,id_cliente,cantidad,subtotal) VALUES (?,?,?,?,?);',[ [parseInt(rows[rows.length-1].id_factura,10)],[parseInt(productos[ixx].id_producto,10)],[parseInt(id_cliente,10)],[parseInt(productos[ixx].cantidad,10)],subtotalAPagar2], function(err, rows, fields) {
+												//res.json({"msg":true,"user":id_cliente,"name":rows[rows.length-1].id_factura});
+												//res.json({"msg":true});
+											});
+										});
+									}
+									
+									if(ixx == productos.length -1){
+										conexion.query('SELECT email FROM Cliente WHERE id_cliente = ?;',[parseInt(id_cliente,10)], function(err, rows2, fields) {
+											if (err) throw err;
+											console.log(rows2);
+											var traspoter = nodemailer.createTransport({ 
+												service: 'gmail',
+												auth: {
+													user: 'proyectosag13@gmail.com',
+													pass: '123cuaderno' // naturally, replace both with your real credentials or an application-specific password
+												}
+											});
+										
+											var mailOption = {
+												from: "Remitente",
+												to: rows2[0].email,
+												subject: "Notificacion Compra",
+												text: "Gracias por tu compra :D tu factura No. " + [parseInt(rows[rows.length-1].id_factura,10)] + " con un total de Q. " + totalAPagar + " ha sido registrada, ATT G13"
+											};
+										
+											traspoter.sendMail(mailOption,(error,info)=>{
+												if(error){
+													res.status(500).send(error.message);
+												}
+												else{
+													console.log("Email enviado");
+													//res.status(200).jsonp(req.body);
+												}
+											});		
+										});
+									}
+								}
+								
+							});
+						});
+					}
+				});
+			}else{
+				conexion.query('SELECT * FROM Producto WHERE id_Producto = ?', [parseInt(productos[i].id_producto,10)], function(error, result, fields) {
+					totalAPagar = totalAPagar + (parseFloat(result[0].precio_final) * parseFloat(productos[i].cantidad));
+					if(i == productos.length -1){
+						console.log("--" + totalAPagar)
+						conexion.query('INSERT INTO Factura (id_cliente,fecha,total,NIT,Direccion_De_Envio,EstadoFinal) VALUES (?,NOW(),?,?,?,?);',[ [parseInt(id_cliente,10)],totalAPagar,"CF","Guatemala","EN_TIENDA"], function(err, rows, fields) {
+							conexion.query('SELECT * FROM Factura WHERE id_cliente = ?;',[parseInt(id_cliente,10)], function(err, rows, fields) {
+								for(let ixx = 0; ixx < productos.length;ixx++){
+									if(parseInt(productos[ixx].id_producto,10)>=2000){
+										conexion.query('SELECT * FROM Producto_Cliente WHERE  id_Producto_Cliente = ?', [parseInt(productos[ixx].id_producto,10)], function(error, resultxd, fields) {
+											console.log("que pedo")
+											let subtotalAPagar2 = (parseFloat(resultxd[0].precio_final) * parseFloat(productos[ixx].cantidad));
+											conexion.query('INSERT INTO Venta (id_factura,id_Producto_Cliente,id_cliente,cantidad,subtotal) VALUES (?,?,?,?,?);',[ [parseInt(rows[rows.length-1].id_factura,10)],[parseInt(productos[ixx].id_producto,10)],[parseInt(id_cliente,10)],[parseInt(productos[ixx].cantidad,10)],subtotalAPagar2], function(err, rows, fields) {
+												//res.json({"msg":true,"user":id_cliente,"name":rows[rows.length-1].id_factura});
+												//res.json({"msg":true});
+											});
+										});
+									}else{
+										conexion.query('SELECT * FROM Producto WHERE  id_Producto = ?', [parseInt(productos[ixx].id_producto,10)], function(error, resultxd, fields) {
+											console.log("que pedo")
+											let subtotalAPagar2 = (parseFloat(resultxd[0].precio_final) * parseFloat(productos[ixx].cantidad));
+											conexion.query('INSERT INTO Venta (id_factura,id_Producto,id_cliente,cantidad,subtotal) VALUES (?,?,?,?,?);',[ [parseInt(rows[rows.length-1].id_factura,10)],[parseInt(productos[ixx].id_producto,10)],[parseInt(id_cliente,10)],[parseInt(productos[ixx].cantidad,10)],subtotalAPagar2], function(err, rows, fields) {
+												//res.json({"msg":true,"user":id_cliente,"name":rows[rows.length-1].id_factura});
+												//res.json({"msg":true});
+											});
+										});
+									}
+									if(ixx == productos.length -1){
+										conexion.query('SELECT email FROM Cliente WHERE id_cliente = ?;',[parseInt(id_cliente,10)], function(err, rows2, fields) {
+											if (err) throw err;
+											console.log(rows2);
+											var traspoter = nodemailer.createTransport({ 
+												service: 'gmail',
+												auth: {
+													user: 'proyectosag13@gmail.com',
+													pass: '123cuaderno' // naturally, replace both with your real credentials or an application-specific password
+												}
 
+											});
+										
+											var mailOption = {
+												from: "Remitente",
+												to: rows2[0].email,
+												subject: "Notificacion Compra",
+												text: "Gracias por tu compra :D tu factura No. " + [parseInt(rows[rows.length-1].id_factura,10)] + " con un total de Q. " + totalAPagar + " ha sido registrada, ATT G13"
+											};
+										
+											traspoter.sendMail(mailOption,(error,info)=>{
+												if(error){
+													res.status(500).send(error.message);
+												}
+												else{
+													console.log("Email enviado");
+													//res.status(200).jsonp(req.body);
+												}
+											});		
+										});
+									}
+									
+								}
+								
+							});
+						});
+					}
+				});
+			}
+			
+		}
+		for(let i = 0; i < productos.length;i++){
+			
+			if(parseInt(productos[i].id_producto,10)>=2000){
+				conexion.query("UPDATE Producto_Cliente SET stock = (stock - ?) WHERE id_Producto_Cliente = ?", [parseFloat(productos[i].cantidad),parseInt(productos[i].id_producto,10)], function(error, result, fields) {
+				
+				});
+			}else{
+				conexion.query("UPDATE Producto SET stock = (stock - ?) WHERE id_Producto = ?", [parseFloat(productos[i].cantidad),parseInt(productos[i].id_producto,10)], function(error, result, fields) {
+				
+				});
+			}
+		}
+		res.status(200)		
+		res.json({
+			"status": "success",
+			"message": "Se ha relizado la compra de manera exitosa."
+		});
+		
+			
+	}else{
+		res.status(400)
+		res.json({
+			"status": "fail",
+			"message": "No se encontró el campo obligatorio."
+		});
+	}
+});
 
 
 app.listen(app.get('port'),()=>{
