@@ -42,6 +42,8 @@ import { OfertasClienteComponent } from './ofertas-cliente/ofertas-cliente.compo
 import { PantallaAdminComponent } from './pantalla-admin/pantalla-admin.component';
 import { LoginadminComponent } from './loginadmin/loginadmin.component';
 import { NavBarAdminComponent } from './nav-bar-admin/nav-bar-admin.component';
+import { VentasClienteComponent } from './ventas-cliente/ventas-cliente.component';
+import { VentasProveedorComponent } from './ventas-proveedor/ventas-proveedor.component';
 
 
 
@@ -84,7 +86,9 @@ import { NavBarAdminComponent } from './nav-bar-admin/nav-bar-admin.component';
     OfertasClienteComponent,
     PantallaAdminComponent,
     LoginadminComponent,
-    NavBarAdminComponent
+    NavBarAdminComponent,
+    VentasClienteComponent,
+    VentasProveedorComponent
   ],
   imports: [
     BrowserModule,
