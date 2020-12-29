@@ -39,6 +39,13 @@ import { MisComprasComponent } from './mis-compras/mis-compras.component';
 import { ProductosSubastaClienteComponent } from './productos-subasta-cliente/productos-subasta-cliente.component';
 import { ProductosSubastaProveedorComponent } from './productos-subasta-proveedor/productos-subasta-proveedor.component';
 import { OfertasClienteComponent } from './ofertas-cliente/ofertas-cliente.component';
+import { PantallaAdminComponent } from './pantalla-admin/pantalla-admin.component';
+import { LoginadminComponent } from './loginadmin/loginadmin.component';
+import { NavBarAdminComponent } from './nav-bar-admin/nav-bar-admin.component';
+import { VentasClienteComponent } from './ventas-cliente/ventas-cliente.component';
+import { VentasProveedorComponent } from './ventas-proveedor/ventas-proveedor.component';
+import { EstadoPedidoComponent } from './estado-pedido/estado-pedido.component';
+import { ProductosCategoriaComponent } from './productos-categoria/productos-categoria.component';
 
 
 
@@ -78,7 +85,14 @@ import { OfertasClienteComponent } from './ofertas-cliente/ofertas-cliente.compo
     MisComprasComponent,
     ProductosSubastaClienteComponent,
     ProductosSubastaProveedorComponent,
-    OfertasClienteComponent
+    OfertasClienteComponent,
+    PantallaAdminComponent,
+    LoginadminComponent,
+    NavBarAdminComponent,
+    VentasClienteComponent,
+    VentasProveedorComponent,
+    EstadoPedidoComponent,
+    ProductosCategoriaComponent
   ],
   imports: [
     BrowserModule,

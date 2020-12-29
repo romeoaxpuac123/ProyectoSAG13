@@ -61,7 +61,7 @@ export class ComprarAClientesComponent implements OnInit {
         this.respuesta_carrito = result;
         console.log(this.respuesta_carrito);
         if (this.respuesta_carrito.msg == true) {
-          alert("todo tranquilo todo normal");
+          alert("Se agrego correctamente.");
         } else {
           alert("Hubo un error");
 

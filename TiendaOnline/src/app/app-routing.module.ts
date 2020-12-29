@@ -30,7 +30,13 @@ import { MisFacturasComponent } from './mis-facturas/mis-facturas.component';
 import { MisComprasComponent } from './mis-compras/mis-compras.component';
 import { ProductosSubastaClienteComponent } from './productos-subasta-cliente/productos-subasta-cliente.component';
 import { ProductosSubastaProveedorComponent } from './productos-subasta-proveedor/productos-subasta-proveedor.component';
-import { OfertasClienteComponent } from './ofertas-cliente/ofertas-cliente.component'
+import { OfertasClienteComponent } from './ofertas-cliente/ofertas-cliente.component';
+import { PantallaAdminComponent } from './pantalla-admin/pantalla-admin.component';
+import { LoginadminComponent } from './loginadmin/loginadmin.component';
+import { VentasClienteComponent } from './ventas-cliente/ventas-cliente.component';
+import { VentasProveedorComponent } from './ventas-proveedor/ventas-proveedor.component';
+import { EstadoPedidoComponent } from './estado-pedido/estado-pedido.component';
+import { ProductosCategoriaComponent} from './productos-categoria/productos-categoria.component'
 const routes: Routes = [ 
   {path:'',redirectTo:'/welcome',pathMatch:'full'},
   { path: 'welcome', component: PantallaInicialComponent },
@@ -63,7 +69,15 @@ const routes: Routes = [
   { path: 'mis-compras', component: MisComprasComponent},
   { path: 'productos-subasta-cliente', component: ProductosSubastaClienteComponent},
   { path: 'productos-subasta-proveedor', component: ProductosSubastaProveedorComponent},
-  { path: 'ofertas-cliente', component: OfertasClienteComponent}
+  { path: 'ofertas-cliente', component: OfertasClienteComponent},
+  { path: 'pantalla-admin', component: PantallaAdminComponent},
+  { path: 'loginadmin', component: LoginadminComponent},
+  { path: 'ventas-cliente', component: VentasClienteComponent},
+  { path: 'ventas-proveedor', component: VentasProveedorComponent},
+  { path: 'estado-pedido', component: EstadoPedidoComponent},
+  { path: 'productos-categoria', component: ProductosCategoriaComponent}
+
+
 ];
 
 @NgModule({
