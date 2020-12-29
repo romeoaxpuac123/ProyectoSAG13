@@ -109,7 +109,7 @@ app.post('/ModificarEstado',(req,res)=>{
 							}
 							else{
 								console.log("Email enviado");
-								res.status(200).jsonp(req.body);
+								//res.status(200).jsonp(req.body);
 								res.json({"msg":true});
 								
 							}
