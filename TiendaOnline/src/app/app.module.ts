@@ -44,6 +44,8 @@ import { LoginadminComponent } from './loginadmin/loginadmin.component';
 import { NavBarAdminComponent } from './nav-bar-admin/nav-bar-admin.component';
 import { VentasClienteComponent } from './ventas-cliente/ventas-cliente.component';
 import { VentasProveedorComponent } from './ventas-proveedor/ventas-proveedor.component';
+import { EstadoPedidoComponent } from './estado-pedido/estado-pedido.component';
+import { ProductosCategoriaComponent } from './productos-categoria/productos-categoria.component';
 
 
 
@@ -88,7 +90,9 @@ import { VentasProveedorComponent } from './ventas-proveedor/ventas-proveedor.co
     LoginadminComponent,
     NavBarAdminComponent,
     VentasClienteComponent,
-    VentasProveedorComponent
+    VentasProveedorComponent,
+    EstadoPedidoComponent,
+    ProductosCategoriaComponent
   ],
   imports: [
     BrowserModule,

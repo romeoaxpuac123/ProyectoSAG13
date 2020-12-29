@@ -33,8 +33,10 @@ import { ProductosSubastaProveedorComponent } from './productos-subasta-proveedo
 import { OfertasClienteComponent } from './ofertas-cliente/ofertas-cliente.component';
 import { PantallaAdminComponent } from './pantalla-admin/pantalla-admin.component';
 import { LoginadminComponent } from './loginadmin/loginadmin.component';
-import { VentasClienteComponent } from './ventas-cliente/ventas-cliente.component'
-import { VentasProveedorComponent } from './ventas-proveedor/ventas-proveedor.component'
+import { VentasClienteComponent } from './ventas-cliente/ventas-cliente.component';
+import { VentasProveedorComponent } from './ventas-proveedor/ventas-proveedor.component';
+import { EstadoPedidoComponent } from './estado-pedido/estado-pedido.component';
+import { ProductosCategoriaComponent} from './productos-categoria/productos-categoria.component'
 const routes: Routes = [ 
   {path:'',redirectTo:'/welcome',pathMatch:'full'},
   { path: 'welcome', component: PantallaInicialComponent },
@@ -71,7 +73,9 @@ const routes: Routes = [
   { path: 'pantalla-admin', component: PantallaAdminComponent},
   { path: 'loginadmin', component: LoginadminComponent},
   { path: 'ventas-cliente', component: VentasClienteComponent},
-  { path: 'ventas-proveedor', component: VentasProveedorComponent}
+  { path: 'ventas-proveedor', component: VentasProveedorComponent},
+  { path: 'estado-pedido', component: EstadoPedidoComponent},
+  { path: 'productos-categoria', component: ProductosCategoriaComponent}
 
 
 ];
