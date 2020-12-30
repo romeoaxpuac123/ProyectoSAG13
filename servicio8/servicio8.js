@@ -41,7 +41,13 @@ app.post('/registrar-cliente',(req,res)=>{
 	console.log("------")
 	console.log(req.body)
 	
-	if(nombre && apellido && email && contrasena && celular){
+	if(nombre  && email && contrasena){
+		if(!(apellido)){
+			apellido = "";
+		}
+		if(!(celular)){
+			celular = "";
+		}
 		////res.status(200)
 		//res.json({"msg":true});
 		conexion.query('SELECT * FROM Cliente WHERE email = ? ', [email], function(error, result, fields) {
@@ -100,7 +106,13 @@ app.post('/registrar-cliente',(req,res)=>{
 
 app.post('/registrar-proveedor',(req,res)=>{
 	const {nombre, apellido, empresa, email, contrasena,direccion} = req.body;
-	if(nombre && apellido && empresa && email && contrasena && direccion){
+	if(nombre  && empresa && email && contrasena){
+		if(!(apellido)){
+			apellido = "";
+		}
+		if(!(direccion)){
+			direccion = "";
+		}
 		conexion.query('SELECT * FROM Proveedor WHERE email = ? ', [email], function(error, result, fields) {
 			if (result.length > 0) {
 				//res.status(409)
