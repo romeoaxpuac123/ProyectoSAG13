@@ -7,7 +7,7 @@ export class RegistrarProveedorService {
 
   
   constructor(private http:HttpClient) { }
-  API_URI='http://34.121.67.41:3003/regisProveedor';
+  API_URI='http://www.sa-proyecto.tk/api/regisProveedor';
 
   enviarDatos(empresa:string,email:string,password:string,direccion:string){
 

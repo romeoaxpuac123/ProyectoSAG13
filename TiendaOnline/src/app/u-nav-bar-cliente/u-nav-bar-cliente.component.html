@@ -1,0 +1,31 @@
+<div class="encabezado" align="center">
+    <div class="container">
+        <h1 class="display-3"><strong>Super Market</strong></h1>
+    </div>
+</div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark"  style=" padding-top: 0mm;">
+        <a id='linkWelcome' class="navbar-brand">Perfil</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  
+            <ul class="navbar-nav mr-auto">
+                
+                <li class="nav-item">
+                    <a id="linkRegister" class="nav-link" [routerLink]="['/u-crear-producto-cliente']">Agregar producto</a>
+                </li>
+
+                <li class="nav-item">
+                    <a id="linkRegister" class="nav-link" [routerLink]="['/u-ver-productos']">Catalogo</a>
+                </li>
+               
+            
+            </ul>
+            <span class="navbar-text">
+                <button type="button" class="btn btn-danger" (click)="cerrar_sesion();">Cerrar Sesión</button>
+              </span>
+        </div>
+</nav>
+     

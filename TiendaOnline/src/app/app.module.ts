@@ -46,6 +46,15 @@ import { VentasClienteComponent } from './ventas-cliente/ventas-cliente.componen
 import { VentasProveedorComponent } from './ventas-proveedor/ventas-proveedor.component';
 import { EstadoPedidoComponent } from './estado-pedido/estado-pedido.component';
 import { ProductosCategoriaComponent } from './productos-categoria/productos-categoria.component';
+import { ULoginClienteComponent } from './u-login-cliente/u-login-cliente.component';
+import { URegistroClienteComponent } from './u-registro-cliente/u-registro-cliente.component';
+import { ULoginProveedorComponent } from './u-login-proveedor/u-login-proveedor.component';
+import { URegistroProveedorComponent } from './u-registro-proveedor/u-registro-proveedor.component';
+import { UCrearProductoClienteComponent } from './u-crear-producto-cliente/u-crear-producto-cliente.component';
+import { UCrearProductoProveedorComponent } from './u-crear-producto-proveedor/u-crear-producto-proveedor.component';
+import { UVerProductosComponent } from './u-ver-productos/u-ver-productos.component';
+import { UNavBarProveedorComponent } from './u-nav-bar-proveedor/u-nav-bar-proveedor.component';
+import { UNavBarClienteComponent } from './u-nav-bar-cliente/u-nav-bar-cliente.component';
 
 
 
@@ -92,7 +101,16 @@ import { ProductosCategoriaComponent } from './productos-categoria/productos-cat
     VentasClienteComponent,
     VentasProveedorComponent,
     EstadoPedidoComponent,
-    ProductosCategoriaComponent
+    ProductosCategoriaComponent,
+    ULoginClienteComponent,
+    URegistroClienteComponent,
+    ULoginProveedorComponent,
+    URegistroProveedorComponent,
+    UCrearProductoClienteComponent,
+    UCrearProductoProveedorComponent,
+    UVerProductosComponent,
+    UNavBarProveedorComponent,
+    UNavBarClienteComponent
   ],
   imports: [
     BrowserModule,

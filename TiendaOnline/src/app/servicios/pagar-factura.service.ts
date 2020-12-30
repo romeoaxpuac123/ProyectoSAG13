@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class PagarFacturaService {
 
   constructor(private http:HttpClient) {  }
-  API_URI='http://34.121.67.41:7003/Ventas';
+  API_URI='http://www.sa-proyecto.tk/api/Ventas';
   
   pagar_factura(id:string,numero_factura:string){
 

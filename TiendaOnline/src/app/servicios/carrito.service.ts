@@ -7,9 +7,9 @@ import { Injectable } from '@angular/core';
 export class CarritoService {
 
   constructor(private http:HttpClient) {  }
-  API_URI='http://34.121.67.41:7003/MiCarrito';
-  API_URI2='http://34.121.67.41:7003/EliminarCarrito';
-  API_URI3='http://34.121.67.41:7003/Stock';
+  API_URI='http://www.sa-proyecto.tk/api/MiCarrito';
+  API_URI2='http://www.sa-proyecto.tk/api/EliminarCarrito';
+  API_URI3='http://www.sa-proyecto.tk/api/Stock';
 
   get_productos(id:string){
 

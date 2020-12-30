@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class ClienteAgregarProductoService {
 
   constructor(private http:HttpClient) {  }
-  API_URI='http://34.121.67.41:5003/RegistrarProductoCliente';
+  API_URI='http://www.sa-proyecto.tk/api/RegistrarProductoCliente';
 
   agregar_producto(nombre:string,Precio_venta:string,stock:string,categoria:string,imagen:string,id_cliente:string,precio_subaste:string,estado:string){
 

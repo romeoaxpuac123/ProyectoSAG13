@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class ClienteEliminarProductoService {
 
   constructor(private http:HttpClient) {  }
-  API_URI='http://34.121.67.41:5003/EliminarProductoCliente';
+  API_URI='http://www.sa-proyecto.tk/api/EliminarProductoCliente';
 
   eliminar_producto(id:string){
 
