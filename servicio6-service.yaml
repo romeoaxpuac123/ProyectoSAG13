@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: servicio6
+  name: servicio6
+spec:
+  ports:
+    - name: "8003"
+      port: 8003
+      targetPort: 8003
+  selector:
+    io.kompose.service: servicio6
+status:
+  loadBalancer: {}

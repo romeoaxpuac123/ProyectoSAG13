@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: mysql-bd
+  name: mysql-bd
+spec:
+  ports:
+    - name: "33060"
+      port: 33060
+      targetPort: 3306
+  selector:
+    io.kompose.service: mysql-bd
+status:
+  loadBalancer: {}

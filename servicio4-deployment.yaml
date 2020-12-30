@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: servicio4
+  name: servicio4
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: servicio4
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml
+        kompose.version: 1.22.0 (955b78124)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: servicio4
+    spec:
+      containers:
+        - env:
+            - name: HOST
+              value: mysql-bd
+          image: servicio4
+          name: servicio4
+          ports:
+            - containerPort: 6003
+          resources: {}
+      restartPolicy: Always
+status: {}
