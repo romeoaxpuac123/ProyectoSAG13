@@ -27,7 +27,7 @@ spec:
         - env:
             - name: HOST
               value: mysql-bd
-          image: servicio5
+          image: gcr.io/aerial-anagram-300108/servicio5
           name: servicio5
           ports:
             - containerPort: 7003

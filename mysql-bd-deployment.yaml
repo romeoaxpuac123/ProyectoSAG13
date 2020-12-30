@@ -24,7 +24,7 @@ spec:
         io.kompose.service: mysql-bd
     spec:
       containers:
-        - image: mysql-bd
+        - image: gcr.io/aerial-anagram-300108/mysql-bd
           name: mysql-bd
           ports:
             - containerPort: 3306
