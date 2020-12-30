@@ -228,6 +228,7 @@ app.post('/login-proveedor',(req,res)=>{
 				//res.status(200)
 				res.json(
 					{
+						"status": "success",
 						"code": 200,
 						"data": {
 							"id": user1,
