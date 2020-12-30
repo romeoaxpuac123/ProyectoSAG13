@@ -42,13 +42,14 @@ app.post('/registrar-cliente',(req,res)=>{
 	console.log(req.body)
 	
 	if(nombre && apellido && email && contrasena && celular){
-		//res.status(200)
+		////res.status(200)
 		//res.json({"msg":true});
 		conexion.query('SELECT * FROM Cliente WHERE email = ? ', [email], function(error, result, fields) {
 			if (result.length > 0) {
-				res.status(409)
+				//res.status(409)
 				res.json({
 					"status": "error",
+					"code": 409,
 					"message": "Ya existe un usuario registrado con ese correo electrónico."
 				});
 			} else {
@@ -66,10 +67,10 @@ app.post('/registrar-cliente',(req,res)=>{
 					var celularx = resultados[5].split(':')[1].replace('\"','').replace('\"','');
 					var fotox = resultados[6].split(':')[1].replace('\"','').replace('\"','').replace('}]','');;
 					console.log("RRR*****->" + resultados);
-					res.status(200)
+					//res.status(200)
 					res.json({
 						"status": "success",
-					
+						"code": 200,
 						"data": {
 							"id": elnuevouser,
 							"nombre":nombrex,
@@ -87,9 +88,10 @@ app.post('/registrar-cliente',(req,res)=>{
 			}			
 		});
 	}else{
-		res.status(400)
+		//res.status(400)
 		res.json({
 			"status": "fail",
+			"code": 400,
 			"message": "No se encontró el campo obligatorio."
 		});
 	}
@@ -101,9 +103,10 @@ app.post('/registrar-proveedor',(req,res)=>{
 	if(nombre && apellido && empresa && email && contrasena && direccion){
 		conexion.query('SELECT * FROM Proveedor WHERE email = ? ', [email], function(error, result, fields) {
 			if (result.length > 0) {
-				res.status(409)
+				//res.status(409)
 				res.json({
 					"status": "error",
+					"code": 409,
 					"message": "Ya existe un usuario registrado con ese correo electrónico."
 				});						
 			} else {
@@ -120,10 +123,10 @@ app.post('/registrar-proveedor',(req,res)=>{
 					var direccionx = resultados[4].split(':')[1].replace('\"','').replace('\"','').replace('}]','');
 					console.log("RRR*****->" + resultados);
 
-					res.status(200)
+					//res.status(200)
 					res.json({
 						"status": "success",
-					
+						"code": 200,
 						"data": {
 							"id": elnuevouser,
 							"nombre":nombre,
@@ -141,9 +144,10 @@ app.post('/registrar-proveedor',(req,res)=>{
 			}			
 		});
 	}else{
-		res.status(400)
+		//res.status(400)
 		res.json({
 			"status": "fail",
+			"code": 400,
 			"message": "No se encontró el campo obligatorio."
 		});				
 	}
@@ -169,10 +173,11 @@ app.post('/login-cliente',(req,res)=>{
 				var celularx = resultados[5].split(':')[1].replace('\"','').replace('\"','');
 				var fotox = resultados[6].split(':')[1].replace('\"','').replace('\"','').replace('}]','');;
 				console.log("RRR*****->" + resultados);
-				res.status(200)
+				//res.status(200)
 				res.json(
 					{
 						"status": "success",
+						"code": 200,
 						"data": {
 							"id": user1,
 							"nombre":nombrex,
@@ -185,17 +190,19 @@ app.post('/login-cliente',(req,res)=>{
 					}
 				);
 			} else {
-				res.status(401)
+				//res.status(401)
 				res.json({
 					"status": "error",
+					"code": 401,
 					"message": "Las contraseña es incorrecta o el usuario no existe."
 				});	
 			}			
 		});
 	}else{
-		res.status(400)
+		//res.status(400)
 		res.json({
 			"status": "fail",
+			"code": 400,
 			"message": "No se encontró el campo obligatorio."
 		});		
 	}
@@ -218,9 +225,10 @@ app.post('/login-proveedor',(req,res)=>{
 				var passx = resultados[3].split(':')[1].replace('\"','').replace('\"','');
 				var direccionx = resultados[4].split(':')[1].replace('\"','').replace('\"','').replace('}]','');
 				console.log("RRR*****->" + resultados);
-				res.status(200)
+				//res.status(200)
 				res.json(
 					{
+						"code": 200,
 						"data": {
 							"id": user1,
 							"nombre":nombrex,
@@ -234,17 +242,19 @@ app.post('/login-proveedor',(req,res)=>{
 					}
 				);
 			} else {
-				res.status(401)
+				//res.status(401)
 				res.json({
 					"status": "error",
+					"code": 401,
 					"message": "Las contraseña es incorrecta o el usuario no existe."
 				});	
 			}			
 		});
 	}else{
-		res.status(400)
+		//res.status(400)
 		res.json({
 			"status": "fail",
+			"code": 400,
 			"message": "No se encontró el campo obligatorio."
 		});		
 	}
@@ -271,10 +281,10 @@ app.post('/crear-producto-cliente',(req,res)=>{
 					var  imagen = resultados[5].split('\"imagen\":')[1].replace('\"','').replace('\"','');
 					var precio_final = resultados[6].split(':')[1].replace('\"','').replace('\"','');
 					var id_cliente = resultados[7].split(':')[1].replace('\"','').replace('\"','');
-					res.status(200)
+					//res.status(200)
 					res.json({
 						"status": "success",
-					
+						"code": 200,
 						"data": {
 							"id_producto": elnuevouser,
 							"nombre": Nombrex,
@@ -292,9 +302,10 @@ app.post('/crear-producto-cliente',(req,res)=>{
 				});
 			
 	}else{
-		res.status(400)
+		//res.status(400)
 		res.json({
 			"status": "fail",
+			"code": 400,
 			"message": "No se encontró el campo obligatorio."
 		});
 	}
@@ -320,10 +331,10 @@ app.post('/crear-producto-proveedor',(req,res)=>{
 					var  imagen = resultados[5].split('\"imagen\":')[1].replace('\"','').replace('\"','');
 					var precio_final = resultados[6].split(':')[1].replace('\"','').replace('\"','');
 					var id_cliente = resultados[7].split(':')[1].replace('\"','').replace('\"','');
-					res.status(200)
+					//res.status(200)
 					res.json({
 						"status": "success",
-					
+						"code": 200,
 						"data": {
 							"id_producto": elnuevouser,
 							"nombre": Nombrex,
@@ -341,9 +352,10 @@ app.post('/crear-producto-proveedor',(req,res)=>{
 				});
 			
 	}else{
-		res.status(400)
+		//res.status(400)
 		res.json({
 			"status": "fail",
+			"code": 400,
 			"message": "No se encontró el campo obligatorio."
 		});
 	}
@@ -357,12 +369,13 @@ app.get('/ver-productos', function(req, res) {
 		if(parseInt(req.query.id_producto,10)>=2000){
 			conexion.query('SELECT id_Producto_Cliente AS id_producto,Nombre AS nombre, Nombre AS descripcion,stock,precio_final AS precio_venta, imagen AS foto, fecha_subasta AS fecha_subasta,precio_subaste AS precio_inicial_subasta,precio_subaste AS precio_compralo_ahora FROM Producto_Cliente WHERE id_Producto_Cliente = ?;',[parseInt(req.query.id_producto,10)], function(error, data, fields) {
 				if(data.length>0){
-					res.status(200)
-					res.json({"status": "success",data});
+					//res.status(200)
+					res.json({"status": "success","code": 200,data});
 				}else{
-					res.status(400)
+					//res.status(400)
 					res.json({
 						"status": "fail",
+						"code": 400,
 						"message": "No existe producto."
 					});
 				}
@@ -372,12 +385,13 @@ app.get('/ver-productos', function(req, res) {
 						
 			conexion.query('SELECT id_Producto AS id_producto,Nombre AS nombre, Nombre AS descripcion,stock,precio_final AS precio_venta, imagen AS foto, fecha_subasta AS fecha_subasta,precio_subaste AS precio_inicial_subasta,precio_subaste AS precio_compralo_ahora FROM Producto WHERE id_Producto = ?;',[parseInt(req.query.id_producto,10)], function(error, data, fields) {
 				if(data.length>0){
-					res.status(200)
-					res.json({"status": "success",data});
+					//res.status(200)
+					res.json({"status": "success","code": 200,data});
 				}else{
-					res.status(400)
+					//res.status(400)
 					res.json({
 						"status": "fail",
+						"code": 400,
 						"message": "No existe producto."
 					});
 				}
@@ -392,8 +406,8 @@ app.get('/ver-productos', function(req, res) {
 				console.log(result.length + "--" + result2.length);
 				let data = Object.assign(result);
 				data = data.concat(result2);
-				res.status(200)			
-				res.json({"status": "success",data});
+				//res.status(200)			
+				res.json({"status": "success","code": 200,data});
 				
 			});
 		});
@@ -460,11 +474,11 @@ app.post('/realizar-compra',(req,res)=>{
 										
 											traspoter.sendMail(mailOption,(error,info)=>{
 												if(error){
-													res.status(500).send(error.message);
+													//res.status(500).send(error.message);
 												}
 												else{
 													console.log("Email enviado");
-													//res.status(200).jsonp(req.body);
+													////res.status(200).jsonp(req.body);
 												}
 											});		
 										});
@@ -524,11 +538,11 @@ app.post('/realizar-compra',(req,res)=>{
 										
 											traspoter.sendMail(mailOption,(error,info)=>{
 												if(error){
-													res.status(500).send(error.message);
+													//res.status(500).send(error.message);
 												}
 												else{
 													console.log("Email enviado");
-													//res.status(200).jsonp(req.body);
+													////res.status(200).jsonp(req.body);
 												}
 											});		
 										});
@@ -555,17 +569,19 @@ app.post('/realizar-compra',(req,res)=>{
 				});
 			}
 		}
-		res.status(200)		
+		//res.status(200)		
 		res.json({
 			"status": "success",
+			"code": 200,
 			"message": "Se ha relizado la compra de manera exitosa."
 		});
 		
 			
 	}else{
-		res.status(400)
+		//res.status(400)
 		res.json({
 			"status": "fail",
+			"code": 400,
 			"message": "No se encontró el campo obligatorio."
 		});
 	}
