@@ -1,0 +1,27 @@
+<app-u-nav-bar-cliente></app-u-nav-bar-cliente>
+
+<div class="container" style="padding: 50px;" align="center">
+    <button button type="button" (click)="finalizar_compra()" class="btn btn-dark" title="Finalizar">Finalizar compra</button>
+</div>
+
+  <div class="container">
+    <div class="row row-cols-5" >
+        <div *ngFor="let vec of vector_aux;" class="col"  style=" padding:20px; ">
+            <div class="card" >
+                <img class="card-img-top" src={{vec[5]}} width="auto" height="220px" alt="">
+            <div class="card-body">
+            <p class="card-text">{{vec[1]}}</p>
+            <p class="card-text">{{"Descripción"+vec[2]}}</p>
+            <p class="card-text">{{"Stock "+vec[3]}}</p>
+            <p class="card-text">{{"Comprar ahora Q."+vec[4]}}</p>
+            <button button type="button" (click)="seleccionar_producto(vec[0])" class="btn btn-dark" title="Agregar al carrito">🛒</button>
+            <br>
+            </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<app-pie-pagina></app-pie-pagina>

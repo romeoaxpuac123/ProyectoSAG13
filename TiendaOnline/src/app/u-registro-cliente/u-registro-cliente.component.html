@@ -1,0 +1,77 @@
+<div class="sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a id='linkWelcome' class="navbar-brand" [routerLink]="['/']">SM</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a id="linkRegister" class="nav-link" [routerLink]="['/u-login-cliente']" >Volver</a>
+                </li>
+                
+            </ul>
+  
+        </div>
+    </nav>
+  </div>    
+  
+  <div class="jumbotron" align="center" style="background-color: gold; ">
+            <div class="container">
+                <h1 class="display-3"><strong>Nuevo Cliente</strong></h1>
+                <p>
+                    Completa el siguiente formulario.
+                  </p>
+                  
+            </div>
+        </div>
+  
+  <div class='container' >
+    <form>
+      <div class="form-group" style="padding-bottom:20px; " >
+          <div class="form-group">
+            <input type='text' class='form-control' [placeholder]='placeholders.nombre' name='Nombre' [(ngModel)]="nombre">
+          </div>
+          <div class="form-group">
+            <input type='text' class='form-control' [placeholder]='placeholders.apellido' name='Apellidos' [(ngModel)]="apellido">
+          </div>
+          <div class="form-group">
+            <input type='text' class='form-control' [placeholder]='placeholders.email' name='Email' [(ngModel)]="email">
+          </div>
+          <div class="form-group">
+            <input type='password' class='form-control' [placeholder]='placeholders.password' name='Password' [(ngModel)]="password">
+          </div>
+          <div class="form-group">
+            <input type='text' class='form-control' [placeholder]='placeholders.celular' name='Celular' [(ngModel)]="celular">
+          </div>
+          <div class="form-group">
+            <label for="Opciones">Grupo: </label>
+            <select name="Opciones">
+                <option></option>
+                  <option (click)='seleccionar_grupo("1")'>1</option>
+                  
+                  <option (click)='seleccionar_grupo("3")'>3</option>
+                  <option (click)='seleccionar_grupo("4")'>4</option>
+                  <option (click)='seleccionar_grupo("5")'>5</option>
+                  <option (click)='seleccionar_grupo("6")'>6</option>
+                  <option (click)='seleccionar_grupo("7")'>7</option>
+                  <option (click)='seleccionar_grupo("8")'>8</option>
+                  <option (click)='seleccionar_grupo("9")'>9</option>
+                  <option (click)='seleccionar_grupo("10")'>10</option>
+                  <option (click)='seleccionar_grupo("11")'>11</option>
+
+            </select> 
+          </div>
+          
+          <div class="form-group">
+            <input type='button' (click)='registrarCliente();' class='btn btn-primary' #sendButton value='Registrar'>
+            </div>
+      </div>
+    </form>
+  
+  
+  </div>
+  
+  <app-pie-pagina></app-pie-pagina>

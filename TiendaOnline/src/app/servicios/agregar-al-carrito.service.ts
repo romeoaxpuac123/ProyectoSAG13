@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class AgregarAlCarritoService {
 
   constructor(private http:HttpClient) {  }
-  API_URI='http://34.121.67.41:7003/AgregarACarrito';
+  API_URI='http://www.sa-proyecto.tk/api/AgregarACarrito';
 
   agregar_carrito(id_cliente:string,Nombre:string,id_Producto:string,cantidad:string,precio:string){
 

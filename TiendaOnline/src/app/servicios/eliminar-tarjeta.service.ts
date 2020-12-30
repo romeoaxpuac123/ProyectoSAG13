@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 export class EliminarTarjetaService {
 
   constructor(private http:HttpClient) {  }
-  API_URI='http://34.121.67.41:5003/EliminarTarjeta';
+  API_URI='http://www.sa-proyecto.tk/api/EliminarTarjeta';
 
   eliminar_tarjeta(No_Tarjeta:string,id_cliente:string){
 

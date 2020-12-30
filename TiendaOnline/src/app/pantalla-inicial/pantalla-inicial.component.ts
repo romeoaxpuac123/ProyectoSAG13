@@ -8,8 +8,9 @@ import { CanActivate, Router } from '@angular/router';
 export class PantallaInicialComponent implements OnInit {
 
   constructor(private router: Router) { }
-
+  
   ngOnInit(): void {
+    
   }
 
   gotologinproviders(){
@@ -24,6 +25,16 @@ export class PantallaInicialComponent implements OnInit {
 
   gotologinadmin(){
     this.router.navigate(['/loginadmin']);
+
+  }
+
+  gotologiclientxt(){
+    this.router.navigate(['/u-login-cliente']);
+
+  }
+
+  gotologiproviderxt(){
+    this.router.navigate(['/u-login-proveedor']);
 
   }
 

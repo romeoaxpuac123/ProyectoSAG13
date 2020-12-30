@@ -9,6 +9,7 @@ import { CanActivate, Router } from '@angular/router';
 export class DatosFacturaComponent implements OnInit {
   id_cliente:string="";
   direccion:string="";
+  estado_final:string="";
   nit:string="";
   respuesta:any=[];
   credenciales:any=[];
@@ -27,9 +28,14 @@ export class DatosFacturaComponent implements OnInit {
     }
   }
 
+  set_estado(estado:string){
+    this.estado_final=estado;
+  }
+
   siguiente_paso(){
     
-      this.servdatos.enviar_datos(this.id_cliente,this.direccion,this.nit).subscribe(
+     
+      this.servdatos.enviar_datos(this.id_cliente,this.direccion,this.nit,this.estado_final).subscribe(
         result=>{console.log(result)
           this.respuesta=result;
       

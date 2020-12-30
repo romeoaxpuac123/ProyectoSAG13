@@ -36,7 +36,14 @@ import { LoginadminComponent } from './loginadmin/loginadmin.component';
 import { VentasClienteComponent } from './ventas-cliente/ventas-cliente.component';
 import { VentasProveedorComponent } from './ventas-proveedor/ventas-proveedor.component';
 import { EstadoPedidoComponent } from './estado-pedido/estado-pedido.component';
-import { ProductosCategoriaComponent} from './productos-categoria/productos-categoria.component'
+import { ProductosCategoriaComponent} from './productos-categoria/productos-categoria.component';
+import { ULoginClienteComponent} from './u-login-cliente/u-login-cliente.component';
+import { URegistroClienteComponent} from './u-registro-cliente/u-registro-cliente.component';
+import { ULoginProveedorComponent} from './u-login-proveedor/u-login-proveedor.component';
+import { URegistroProveedorComponent} from './u-registro-proveedor/u-registro-proveedor.component';
+import { UCrearProductoClienteComponent} from './u-crear-producto-cliente/u-crear-producto-cliente.component';
+import { UCrearProductoProveedorComponent} from './u-crear-producto-proveedor/u-crear-producto-proveedor.component';
+import { UVerProductosComponent} from './u-ver-productos/u-ver-productos.component';
 const routes: Routes = [ 
   {path:'',redirectTo:'/welcome',pathMatch:'full'},
   { path: 'welcome', component: PantallaInicialComponent },
@@ -75,7 +82,16 @@ const routes: Routes = [
   { path: 'ventas-cliente', component: VentasClienteComponent},
   { path: 'ventas-proveedor', component: VentasProveedorComponent},
   { path: 'estado-pedido', component: EstadoPedidoComponent},
-  { path: 'productos-categoria', component: ProductosCategoriaComponent}
+  { path: 'productos-categoria', component: ProductosCategoriaComponent},
+  { path: 'u-login-cliente', component: ULoginClienteComponent},
+  { path: 'u-registro-cliente', component: URegistroClienteComponent},
+  { path: 'u-login-proveedor', component: ULoginProveedorComponent},
+  { path: 'u-registro-proveedor', component: URegistroProveedorComponent},
+  { path: 'u-crear-producto-cliente', component: UCrearProductoClienteComponent},
+  { path: 'u-crear-producto-proveedor', component: UCrearProductoProveedorComponent},
+  { path: 'u-ver-productos', component: UVerProductosComponent}
+
+
 
 
 ];

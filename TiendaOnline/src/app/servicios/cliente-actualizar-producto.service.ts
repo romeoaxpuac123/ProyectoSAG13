@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class ClienteActualizarProductoService {
 
   constructor(private http:HttpClient) {  }
-  API_URI='http://34.121.67.41:5003/ActualizarProductoCliente';
+  API_URI='http://www.sa-proyecto.tk/api/ActualizarProductoCliente';
 
   actualizar_producto(id:string,nombre:string,Precio_venta:string,stock:string,categoria:string,imagen:string,id_cliente:string,precio_subaste:string,estado:string){
 

@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 export class LoginClienteService {
 
   constructor(private http:HttpClient) {  }
-  API_URI='http://34.121.67.41:3003/authCliente';
+  API_URI='http://www.sa-proyecto.tk/api/authCliente';
 
   EnviarCredenciales(usuario:string,password:string){
 
